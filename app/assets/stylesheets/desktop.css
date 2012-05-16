@@ -89,7 +89,7 @@ div.menu ul {
   background: #FFFFFF; }
   div.menu ul li {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 15px;
     border: 1px outset; }
   div.menu ul li:active {
     border: 1px inset; }
@@ -97,6 +97,7 @@ div.menu ul {
     color: #FFFFFF;
     background: #000000; }
     div.menu ul li a {
+      color: 000000;
       text-decoration: none; }
     div.menu ul li a:visited {
       color: black; }

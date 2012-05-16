@@ -36,7 +36,10 @@ div.title {
       background: url(add2.gif);
       background-position: center center;
       background-repeat: no-repeat;
-      box-shadow: -0.3px 1px 2px #B3B6BD; }
+      box-shadow: -0.3px 1px 2px #B3B6BD;
+      opacity: 0.5;
+      -moz-opacity: 0.5;
+      filter: alpha(opacity=5); }
     div.title div.title_control div.msg {
       cursor: pointer;
       float: right;
@@ -46,15 +49,18 @@ div.title {
       background: url(msg2.gif);
       background-position: center center;
       background-repeat: no-repeat;
-      box-shadow: -0.3px 1px 2px #B3B6BD; }
+      box-shadow: -0.3px 1px 2px #B3B6BD;
+      opacity: 0.5;
+      -moz-opacity: 0.5;
+      filter: alpha(opacity=5); }
     div.title div.title_control div.add:hover {
-      opacity: 0.5;
-      -moz-opacity: 0.5;
-      filter: alpha(opacity=5); }
+      opacity: 0.9;
+      -moz-opacity: 0.9;
+      filter: alpha(opacity=9); }
     div.title div.title_control div.msg:hover {
-      opacity: 0.5;
-      -moz-opacity: 0.5;
-      filter: alpha(opacity=5); }
+      opacity: 0.9;
+      -moz-opacity: 0.9;
+      filter: alpha(opacity=9); }
   div.title div.userinfo {
     margin-top: 3.8px;
     display: inline-block;

@@ -31,7 +31,7 @@ class HomeController < ApplicationController
 
   def login_facebook
   	scope = []
-  	scope << 'publish_checkins' << 'publish_stream'
+  	scope << 'read_stream' << 'publish_stream'
     rest_graph_setup(:auto_authorize         => true,
                      :auto_authorize_scope   => scope.join(','),
                      :ensure_authorized      => true,

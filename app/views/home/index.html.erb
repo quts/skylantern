@@ -1,0 +1,107 @@
+<!-- app/views/home/index.html.erb -->
+<div class="title">
+	<div class="logo"></div>
+	<div class="title_control">
+		<div class="add"></div>
+		<div class="msg"></div>
+	</div>
+	<div class="userinfo">
+		<span id="UserName"><%= @user['name'] %></span>
+		<img id="UserPhoto" src="https://graph.facebook.com/<%= @user['id']%>/picture" height="36px" width="36px"/>
+	</div>
+</div>
+<div class="background">
+
+	<div class="feedicon"><img src="assets/lantern.gif"></div>
+	<div class="feeditem">
+		<button class="prev">< Prev</button>
+		<button class="next">Next ></button>
+		<br><br>
+		<a href="http://pinterest.com/"><img class="feedprofile" src="assets/profile.jpg"></a>
+		<div class="contentitem">
+			<h1><a href="http://google.com">Yachen Hsieh</a></h1>
+			<div class="content">Go having fun at beach!!!</div>
+			<div class="feeditemtime">
+				<span>---  after 2 hours</span>
+			</div>
+			<div class="mood">		
+				<span>634</span>
+				<button name"like" type="submit">Like</button>	
+				<span>|</span>
+				<span>23</span>
+				<button name"laugh" type="submit">Laugh</button>
+			</div>	
+			<!-- <div><hr width="95%" size="2" color="Black"></div> -->
+			<div class="comment">
+			<form class="comment" method="post" >
+				<ul>
+					<li>
+						<div>
+							<a class="pic" href="http://pinterest.com/"><img class="commentprofile" src="assets/profile2.jpg"></a>
+							<a class="name" href="http://google.com">Andikan</a>
+							<span>Please take me!!!!</span><span></span>
+							<div class="time">3 minutes ago</div>
+							<button name"like" type="submit">Like</button>	
+							<br><br>
+						</div>
+					</li>
+					<li><input placeholder="Write a comment..."></li>
+				</ul>
+			</form>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+<div class="menu" id="TitleMenuStatus" style="display:none;">
+	<ul>
+		<li>News Feeds</li>
+		<li>Favorite</li>
+		<li class="friendList">Friends</li>
+		<li class="FacebookLogout"><%= link_to "Logout", logout_path %></li>
+	</ul>
+</div>
+<div class="friendList" id="friendListStatus" style="display:none;">
+	<input type="button" class="destroy" value="x" />
+	<span>Friends</span>
+	<div class="friendData">
+		<!-- Insert User Data here!! -->
+		<% @user_friend['data'].each do |friend| %>
+		<div class="friend">
+            <img src=https://graph.facebook.com/<%= friend['id'] %>/picture />
+            <span><%= friend['name'] %></span>
+        </div>
+        <% end %>
+	</div>
+</div>
+<div class="addPost" id="addPostStatus" style="display:none;">
+	<input type="button" class="destroy" value="x" />
+	<span>Fly Your Dream</span>
+	<div class="addPost_sky_lantern"></div>
+	<form name="frm" action="form_action.asp" method="get">
+		<div class="addPost_title_control">
+			<div class="one_man"></div>
+			<div class="two_man"></div>
+			<input class="title" id="title" type="text" name="title"  value="title"/><br />
+		</div>
+		<textarea></textarea><br />
+		<div class="timeset">
+			<select class="timeSetSelect">
+				<option value="after">After</option>
+				<option value="before">Before</option>
+			</select>
+			<input class="date" id="date" type="text" name="time"  value="3" />
+			<select name="TimeUnit" id="TimeSetToAfter">
+				<option>minutes</option>
+				<option>hours</option>
+				<option>days</option>
+				<option>weeks</option>
+				<option>mounths</option>
+				<option>years</option>
+			</select>
+		</div><br />
+		<input class="flybuttom" type="submit" value="Fly" /><br />
+	</form>
+
+</div>

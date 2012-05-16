@@ -10,7 +10,8 @@ div.feedicon {
   z-index: 98; }
 
 div.feeditem {
-  font-family: 'Oxygen', sans-serif; 
+  font-family: 'Oxygen', sans-serif;
+  box-shadow: -0.3px 1px 20px #B3B6BD; 
   z-index: 97;
   display: none;
   background: #FFFFFF;
@@ -40,10 +41,12 @@ div.feeditem {
     background: #000000;
     color: #FFFFFF; }
   div.feeditem img.feedprofile {
+    box-shadow: -0.3px 1px 2px #B3B6BD;
     margin-left: 4px;
     height: 105px;
     width: 85px; }
   div.feeditem img.commentprofile {
+    box-shadow: -0.3px 1px 2px #B3B6BD; 
     margin-left: 4px;
     height: 45px;
     width: 40px; }

@@ -166,20 +166,22 @@ div.addPost {
     background: white; }
     div.addPost div.addPost_title_control div.one_man {
       float: right;
-      margin: 0px 5px 0px 5px;
+      margin: 3px 5px 0px 5px;
       width: 36px;
       height: 36px;
-      background: url(one_man.gif);
+      background: url(one_man2.png);
       background-position: center center;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      box-shadow: -0.3px 1px 2px #B3B6BD; }
     div.addPost div.addPost_title_control div.two_man {
       float: right;
-      margin: 0px 5px 0px 5px;
+      margin: 3px 5px 0px 5px;
       width: 36px;
       height: 36px;
-      background: url(two_man.gif);
+      background: url(two_man2.png);
       background-position: center center;
-      background-repeat: no-repeat; }
+      background-repeat: no-repeat;
+      box-shadow: -0.3px 1px 2px #B3B6BD; }
     div.addPost div.addPost_title_control div.one_man:hover {
       opacity: 0.5;
       -moz-opacity: 0.5;

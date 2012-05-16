@@ -56,10 +56,10 @@
 </div>
 <div class="menu" id="TitleMenuStatus" style="display:none;">
 	<ul>
-		<li>News Feeds</li>
-		<li>Favorite</li>
-		<li class="friendList">Friends</li>
-		<li class="FacebookLogout"><%= link_to "Logout", logout_path %></li>
+		<%= link_to(home_path) do %><li>News Feeds</li><% end %>
+		<%= link_to(home_path) do %><li>Favorite</li><% end %>
+		<%= link_to(home_path) do %><li class="friendList">Friends</li><% end %>
+		<%= link_to(logout_path) do %><li class="FacebookLogout">Logout</li><% end %>
 	</ul>
 </div>
 <div class="friendList" id="friendListStatus" style="display:none;">

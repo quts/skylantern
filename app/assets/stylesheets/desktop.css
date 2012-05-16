@@ -87,23 +87,31 @@ div.menu ul {
   width: 200px;
   text-align: center;
   background: #FFFFFF; }
-  div.menu ul li {
+  div.menu ul a li {
+    padding-top: 2px;
+    padding-bottom: 2px;
     cursor: pointer;
     font-size: 15px;
-    border: 1px outset; }
-  div.menu ul li:active {
-    border: 1px inset; }
-  div.menu ul li:hover {
+    box-shadow: -0.3px 1px 2px #B3B6BD;
+    opacity: 0.8; }
+    /*border: 1px outset;*/ 
+  /*div.menu ul li:active {
+    border: 1px inset; }*/
+  div.menu ul a li:hover {
+    /*color: #FFFFFF;*/
+    /*text-shadow: -0.3px 0.3px 1px #000000;*/ 
+    font-weight: bold;
+    opacity: 1;}
+  div.menu ul a {
+    color: #000000;
+    text-decoration: none; }
+  div.menu ul a li:visited {
+    color: black;
+    text-decoration: none;
+     }
+  /*div.menu ul a:hover {
     color: #FFFFFF;
-    background: #000000; }
-    div.menu ul li a {
-      color: #000000;
-      text-decoration: none; }
-    div.menu ul li a:visited {
-      color: black; }
-    div.menu ul li a:hover {
-      color: #FFFFFF;
-      background: #000000; }
+    background: #1163BB; }*/
 
 div.addPost {
   position: absolute;

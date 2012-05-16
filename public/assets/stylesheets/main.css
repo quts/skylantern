@@ -1,0 +1,34 @@
+body {
+  font-family: 'Oxygen', sans-serif; }
+
+.disappear {
+  opacity: 0;
+  -moz-opacity: 0;
+  filter: alpha(opacity=0); }
+
+.appear {
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: alpha(opacity=1); }
+
+input.destroy {
+  z-index: 99;
+  font-family: clear;
+  font-size: 10px;
+  float: right;
+  background: #000000;
+  color: #FFFFFF;
+  padding: 5px;
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: 0px; }
+
+input.destroy:active {
+  color: black;
+  background: white; }
+
+input.destroy:hover {
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  filter: alpha(opacity=8); }

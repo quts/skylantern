@@ -7,4 +7,4 @@ development:
 production:
     app_id: '155537004576917'
     secret: 'a3d1323fe0ca08784cc00060c67e4b49'
-    callback_host: 'andikan-wall.herokuapp.com/'
+    callback_host: 'skylantern.herokuapp.com/'

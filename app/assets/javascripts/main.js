@@ -27,7 +27,7 @@ $(function(){
 		
 		$('div.feedicon').on('hover',function(){
 			console.log("I am here");
-			$('div.feeditem').show('clip');
+			$('div.feeditem').fadeIn(1000);
 		// $('div.feeditem').css('display', 'block');
 		// document.getElementById('TitleMenuStatus').style.display = 'none';
 		});

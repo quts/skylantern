@@ -14,7 +14,7 @@
 }
 
 .out_logo{
-	z-index: 2;
+	z-index: 3;
 	position: absolute;
 	/*float:left;*/
 	top: 10px;
@@ -25,7 +25,7 @@
 }
 
 .out_login{
-	z-index: 3;
+	z-index: 4;
 	position: absolute;
 	/*float:left;*/
 	top: 370px;

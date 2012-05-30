@@ -1,7 +1,5 @@
 class MsgChangeLink < ActiveRecord::Migration
-  def up
-  end
-
-  def down
+  def change
+    change_column :msgs, :link, :text, :limit => nil
   end
 end

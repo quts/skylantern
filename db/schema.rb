@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530010821) do
+ActiveRecord::Schema.define(:version => 20120530204545) do
 
   create_table "comments", :force => true do |t|
     t.string   "comment_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120530010821) do
     t.text     "like"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "user_name"
   end
 
   create_table "msgs", :force => true do |t|
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20120530010821) do
     t.string   "user_id"
     t.string   "color"
     t.string   "user_name"
-    t.string   "link"
+    t.text     "link"
   end
 
   create_table "users", :force => true do |t|

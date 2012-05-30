@@ -122,6 +122,50 @@ class HomeController < ApplicationController
 
   # get 'msg/:msg_id'
   def msg
+    #載入msg的資料
+    @msg_data = Msg.find_by_msg_id(params[:msg_id])
+    #計算結束時間
+    @overTime = @msg_data[:dead_time].to_i - Time.now.to_i
+    if(@overTime > 0)
+        if(Time.at(@overTime).year-Time.at(0).year > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).year-Time.at(0).year).to_s + "year(s)"
+        elsif(Time.at(@overTime).mon-Time.at(0).mon > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).mon-Time.at(0).mon).to_s + "month(s)"
+        elsif(Time.at(@overTime).day-Time.at(0).day > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).day-Time.at(0).day).to_s + "day(s)"
+        elsif(Time.at(@overTime).hour-Time.at(0).hour > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).hour-Time.at(0).hour).to_s + "hour(s)"
+        elsif(Time.at(@overTime).min-Time.at(0).min > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).min-Time.at(0).min).to_s + "minute(s)"
+        else
+            @overTimeText = "--- after " + (Time.at(@overTime).sec-Time.at(0).sec).to_s + "sec(s)"
+        end
+    else
+        @overTimeText = "--- done at " + @msg_data[:dead_time].to_s
+    end
+    #載入comment的資料
+    @comment_data = Comment.where(:msg_id => params[:msg_id])
+  end
+
+  def commentCreat
+    @comment = params[:comment]
+    @current_time = Time.now.to_i.to_s
+    new_comment = Comment.new(
+      comment_id: @comment['msg_id'] + "_" + @current_time , 
+      msg_id: @comment['msg_id'], 
+      user_id: rest_graph.get('/me')['id'],
+      user_name: rest_graph.get('/me')['name'],
+      time: Time.now, 
+      content: @comment['content'],
+      like: []
+    )
+    new_comment.save
+    redirect_to '/msg/' + @comment['msg_id']
+  end
+
+  def deleteComment
+    Comment.find_by_comment_id(params[:comment_id]).destroy
+    redirect_to '/msg/' + params[:comment_id].split("_")[0].to_s + "_" + params[:comment_id].split("_")[1].to_s
   end
 
   def add

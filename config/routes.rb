@@ -14,6 +14,11 @@ Sky::Application.routes.draw do
   get '/like/:msg_id' => 'home#like'
   get '/lol/:msg_id' => 'home#lol'
 
+  get '/commentCreat' => 'home#add'
+  post '/commentCreat' => 'home#commentCreat'
+
+  get '/deleteComment/:comment_id' => 'home#deleteComment'
+
   get '/add' => 'home#add'
   post '/add' => 'home#create' 
 

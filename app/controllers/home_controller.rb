@@ -237,8 +237,8 @@ class HomeController < ApplicationController
                             :caption => @msg[:content],#這裡塞msg的content
                             :media =>[{
                               :type => 'image',
-                              :src  => 'http://skylantern.herokuapp.com/assets/title.gif',#這裡塞msg的圖片
-                              :href => 'http://skylantern.herokuapp.com/msg' + @msg_id}] #這裡塞msg的link
+                              :src  => 'http://skylantern.herokuapp.com/assets/login3.jpg',#這裡塞msg的圖片
+                              :href => 'http://skylantern.herokuapp.com/msg/' + @msg_id}] #這裡塞msg的link
                               }.to_json,
                   :action_links => [{
                     :text => 'Publish from Sky Lantern',

@@ -30,8 +30,9 @@ $(function(){
 					}
 					var lantern_top = time_ratio * 520;
 					$('<div class="feedicon" id="feedicon-'+(i+1)+'">'+
-					    '<img id="'+(i+1)+'" src="assets/lantern.gif" style="top: '+lantern_top+'px;">'+
+					    '<img class="feedicon_img" id="'+(i+1)+'" src="assets/lantern.gif" style="top: '+lantern_top+'px;">'+
 					    '<div class="lantern_color" id="color-'+(i+1)+'"></div>'+
+					    '<div class="mini_img" id="mini_img-'+(i+1)+'"><img src="https://graph.facebook.com/'+msg_feed[i].user_id+'/picture"></div>'+
 					  '</div>'+
 					  '<div class="feeditem" id="feeditem-'+(i+1)+'">'+
 					  	'<div class="feeditemprofile">'+
@@ -66,11 +67,13 @@ $(function(){
 					*/
 				}
 				//let lantern fly
-				$('div.feedicon img').each(function(index) {
+				$('div.feedicon img.feedicon_img').each(function(index) {
 					console.log("refresh");
 					var currentId = $(this).attr('id');
 					var tempTop = $(this).position().top;
 					var tempLeft = $('div#feedicon-'+ currentId).position().left;
+
+					$('div#mini_img-'+ currentId).css('top', tempTop+55);
 
 					var feeditem_height = $('div#feeditem-'+ currentId).css('height');
 					feeditem_height = feeditem_height.split("px");

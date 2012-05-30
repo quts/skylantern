@@ -34,13 +34,16 @@ $(document).ready(function(){
         //let lantern fly
         var windowWidth = $(window).width();
         console.log("window width :"+windowWidth);
-		$('div.feedicon img').each(function(index) {
+		$('div.feedicon img.feedicon_img').each(function(index) {
 			var currentId = $(this).attr('id');
 			var tempTop = $(this).position().top;
 			var tempLeft = $('div#feedicon-'+ currentId).position().left;
 
 			$(this).css('top', '520px');
 			$(this).animate({top:tempTop},5000);
+
+			$('div#mini_img-'+ currentId).css('top', '575px');
+			$('div#mini_img-'+ currentId).animate({top:tempTop+55},5000);
 
 			var feeditem_height = $('div#feeditem-'+ currentId).css('height');
 			feeditem_height = feeditem_height.split("px");

@@ -47,8 +47,8 @@ div.feedicon {
   position: relative;
   margin:0 20px 0 0px;
   /*padding:0 10px 0 10px;*/
-  /*border-style: solid;*/
-  /*border-width:1px;*/
+  border-style: solid;
+  border-width:1px;
   float:left;
   /*display: block;*/
   /*white-space: nowrap;*/
@@ -62,13 +62,35 @@ div.feedicon {
   /*margin-right: 500px;*/
   z-index: 96; }
 
-div.feedicon img{
+div.feedicon img.feedicon_img{
   z-index: 96;
   position: absolute;
   top:520px;
-  border-style: solid;
+  /*border-style: solid;*/
   opacity: 0.75;
 }
+
+div.feedicon div.mini_img{
+  z-index: 80;
+  position: absolute;
+  top:520px;
+  left: 9px;
+  /*border-style: solid;*/
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Safari and Chrome */
+  -o-transform: rotate(45deg); /* Opera */
+  -moz-transform: rotate(45deg); /* Firefox */
+}
+
+div.feedicon div.mini_img img{
+  width: 20px;
+  height: 20px;
+}
+
+
 
 div.lantern_color{
   z-index: 50;
@@ -90,6 +112,7 @@ div.lantern_color{
   box-shadow: -1px -5px 50px 20px #F9F262;
   display: none;
 }
+
 
 div.feeditem {
   font-family: 'Oxygen', sans-serif;

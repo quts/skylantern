@@ -26,7 +26,7 @@ div.title {
     float: left;
     margin-top: 3px;
     margin-left: 10px;
-    width: 210px;
+    width: 260px;
     height: 36px;
     /*background: url(title.gif);*/
     /*background-repeat: no-repeat;*/ }
@@ -36,11 +36,11 @@ div.title {
     filter: alpha(opacity=8); }
   div.title div.title_control {
     margin-top: 3.8px;
-    float: right;
-    margin-right: 10px; }
+    float: left;
+    margin-left: 370px; }
     div.title div.title_control div.add {
       cursor: pointer;
-      float: right;
+      /*float: right;*/
       margin: 0px 5px 0px 5px;
       width: 36px;
       height: 36px;
@@ -74,6 +74,7 @@ div.title {
       filter: alpha(opacity=9); }
   div.title div.userinfo {
     margin-top: 3.8px;
+    margin-right: 40px;
     display: inline-block;
     opacity: 0.9;
     -moz-opacity: 0.9;

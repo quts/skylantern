@@ -1,3 +1,4 @@
+#encoding: utf-8
 # app/controller/home.rb
 class HomeController < ApplicationController
   include RestGraph::RailsUtil
@@ -183,6 +184,23 @@ class HomeController < ApplicationController
                       :link => @msg[:link]
                       )
     if(new_msg.save)
+      if(params[:pushToFB])
+            rest_graph.old_rest('stream.publish',{
+                    :message    => '我在SkyLantern許了一個願，快來看！！！',#這裡塞固定訊息              
+                    :attachment =>{
+                            :name => @msg[:title],#這裡塞msg的title
+                            :href => 'http://skylantern.herokuapp.com/msg' + @msg_id,#這裡塞msg的link                    
+                            :caption => @msg[:content],#這裡塞msg的content
+                            :media =>[{
+                              :type => 'image',
+                              :src  => 'http://skylantern.herokuapp.com/assets/title.gif',#這裡塞msg的圖片
+                              :href => 'http://skylantern.herokuapp.com/msg' + @msg_id}] #這裡塞msg的link
+                              }.to_json,
+                  :action_links => [{
+                    :text => 'Publish from Sky Lantern',
+                    :href =>'http://skylantern.herokuapp.com'}].to_json},
+            :auto_decode => false)
+      end
       redirect_to :action => :index
     else
       redirect_to :action => :index

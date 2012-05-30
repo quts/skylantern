@@ -269,31 +269,34 @@ $(document).ready(function(){
 		$('div.addPost div.photoUpload h1.preview').on('click',function(){
 			var previewURL = document.getElementById('addPostPhotoURL').value;
 			var previewPhoto = document.getElementById('addPostPreviewIMG');
-			var previewVIDEO = document.getElementById('addPostPreviewVIDEO');
+			var previewVIDEO = document.getElementById('addPostPreviewVIDEO');			
 			if(previewURL.indexOf('http://ppt.cc')>-1)
 			{
 				previewURL = previewURL + "@.jpg"
 				previewPhoto.src = previewURL;
 				previewPhoto.style.display = 'block';
+				previewVIDEO.style.display = 'none';
+				previewPhoto.onerror=function(){
+					previewPhoto.style.display = 'none';
+					alert("URL doesn't exist");
+				};
 			}
 			else if(previewURL.indexOf('http://www.youtube.com/')>-1)
 			{
 				previewURL = previewURL.split("v=")[1].split("&")[0]
-				previewVIDEO.src = "http://www.youtube.com/v/" + previewURL + "&feature=player_detailpage";
+				previewVIDEO.src = "http://www.youtube.com/v/" + previewURL +"&feature=player_detailpage";
 				previewVIDEO.style.display = 'block';
 				previewPhoto.style.display = 'none';
-			}
-			else
-			{
+			}else{ 
 				previewPhoto.src = previewURL;
 				previewPhoto.style.display = 'block';
 				previewVIDEO.style.display = 'none';
+				previewPhoto.onerror=function(){
+					previewPhoto.style.display = 'none';
+					alert("URL doesn't exist");
+				};
 			}
 		});
-
-		if(($('input#msg_title').val())==""){
-			$('input.flybuttom').attr('disabled', 'disabled');
-		}
 
 
 

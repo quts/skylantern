@@ -40,10 +40,10 @@ $(document).ready(function(){
 			var tempLeft = $('div#feedicon-'+ currentId).position().left;
 
 			$(this).css('top', '520px');
-			$(this).animate({top:tempTop},5000);
+			$(this).animate({top:tempTop},8000);
 
 			$('div#mini_img-'+ currentId).css('top', '575px');
-			$('div#mini_img-'+ currentId).animate({top:tempTop+55},5000);
+			$('div#mini_img-'+ currentId).animate({top:tempTop+55},8000);
 
 			var feeditem_height = $('div#feeditem-'+ currentId).css('height');
 			feeditem_height = feeditem_height.split("px");
@@ -61,7 +61,7 @@ $(document).ready(function(){
 					$('div#feeditem-'+ currentId).css('left', tempLeft+36);
 				}
 				
-				$('div#feeditem-'+ currentId).animate({top:tempTop+58-feeditem_height[0]},5000);
+				$('div#feeditem-'+ currentId).animate({top:tempTop+58-feeditem_height[0]},8000);
 
 			}
 			else{
@@ -72,11 +72,11 @@ $(document).ready(function(){
 				else{
 					$('div#feeditem-'+ currentId).css('left', tempLeft+36);
 				}
-				$('div#feeditem-'+ currentId).animate({top:tempTop+58+36},5000);
+				$('div#feeditem-'+ currentId).animate({top:tempTop+58+36},8000);
 			}
 			
 			$('div#color-'+ currentId).css('top', '540px');
-			$('div#color-'+ currentId).animate({top:tempTop+20},5000);
+			$('div#color-'+ currentId).animate({top:tempTop+20},8000);
 		});
 		//
 		var scroll = $('div.background').scrollLeft();

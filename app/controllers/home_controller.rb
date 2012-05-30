@@ -233,7 +233,7 @@ class HomeController < ApplicationController
                     :message    => '我在SkyLantern許了一個願，快來看！！！',#這裡塞固定訊息              
                     :attachment =>{
                             :name => @msg[:title],#這裡塞msg的title
-                            :href => 'http://skylantern.herokuapp.com/msg' + @msg_id,#這裡塞msg的link                    
+                            :href => 'http://skylantern.herokuapp.com/msg/' + @msg_id,#這裡塞msg的link                    
                             :caption => @msg[:content],#這裡塞msg的content
                             :media =>[{
                               :type => 'image',

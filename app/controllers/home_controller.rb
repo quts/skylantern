@@ -150,7 +150,7 @@ class HomeController < ApplicationController
   end
 
   def deleteMsg
-    if(params[:msg_id].split[0] == rest_graph.get('/me')['id'])
+    if(params[:msg_id].split("_")[0] == rest_graph.get('/me')['id'])
       Msg.find_by_msg_id(params[:msg_id]).destroy
     end
       redirect_to '/'

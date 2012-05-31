@@ -122,6 +122,8 @@ class HomeController < ApplicationController
 
   # get 'msg/:msg_id'
   def msg
+    #找尋現在的User是誰
+    @current_user = rest_graph.get('/me')
     #載入msg的資料
     @msg_data = Msg.find_by_msg_id(params[:msg_id])
     #計算結束時間
@@ -147,11 +149,18 @@ class HomeController < ApplicationController
     @comment_data = Comment.where(:msg_id => params[:msg_id])
   end
 
+  def deleteMsg
+    if(params[:msg_id].split[0] == rest_graph.get('/me')['id'])
+      Msg.find_by_msg_id(params[:msg_id]).destroy
+    end
+      redirect_to '/'
+  end
+
   def commentCreat
     @comment = params[:comment]
     @current_time = Time.now.to_i.to_s
     new_comment = Comment.new(
-      comment_id: @comment['msg_id'] + "_" + @current_time , 
+      comment_id: @comment['msg_id'] +  "_" + rest_graph.get('/me')['id'] + "_" + @current_time.to_i.to_s ,
       msg_id: @comment['msg_id'], 
       user_id: rest_graph.get('/me')['id'],
       user_name: rest_graph.get('/me')['name'],
@@ -164,8 +173,10 @@ class HomeController < ApplicationController
   end
 
   def deleteComment
-    Comment.find_by_comment_id(params[:comment_id]).destroy
-    redirect_to '/msg/' + params[:comment_id].split("_")[0].to_s + "_" + params[:comment_id].split("_")[1].to_s
+    if(params[:comment_id].split("_")[2] == rest_graph.get('/me')['id'] || params[:comment_id].split("_")[0] == rest_graph.get('/me')['id'])
+      Comment.find_by_comment_id(params[:comment_id]).destroy
+    end
+      redirect_to '/msg/' + params[:comment_id].split("_")[0].to_s + "_" + params[:comment_id].split("_")[1].to_s
   end
 
   def add

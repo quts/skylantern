@@ -10,6 +10,7 @@ Sky::Application.routes.draw do
   get '/index/reload' => 'home#reload'
 
   get '/msg/:msg_id' => 'home#msg'
+  get '/deleteMsg/:msg_id' => 'home#deleteMsg'
 
   get '/like/:msg_id' => 'home#like'
   get '/lol/:msg_id' => 'home#lol'

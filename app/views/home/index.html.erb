@@ -110,18 +110,33 @@
 </div>
 <div class="friendList" id="friendListStatus" style="display:none;">
 	<div class="destroy"></div>
-	<span>Friends</span>
+	<span class="friendTitle">Friends</span>
 	<div class="friendData">
 		<!-- Insert User Data here!! -->
-		<% @friends.each do |friend| %>
-			<div class="friend"> 			
-	            <img src=https://graph.facebook.com/<%= friend[:id] %>/picture />
-	            <span><%= friend[:name] %></span>
-	            <% if(friend[:in] == false) %>
-	            <div class="invite"></div>
-	            <% end %>
-	        </div>
-        <% end %>
+		<% @current_user_friends.each do |friend| %>	
+			<% if(friend[:in] == true) %>
+				<a href=<%= "/user/" + friend[:id] %>>
+					<div class="friend"> 		
+		            			<img src=https://graph.facebook.com/<%= friend[:id] %>/picture />
+		            			<div class="nameAndstatus">
+	            					<span class="name"><%= friend[:name] %></span>
+	            					<span class="status">最新消息</span>
+	            				</div>
+	            			</div>
+	            		</a>
+	            	<% end %>
+		<% end %>
+		<% @current_user_friends.each do |friend| %>	
+			<% if(friend[:in] == false) %>
+				<div class="friend"> 		
+		            		<img src=https://graph.facebook.com/<%= friend[:id] %>/picture />
+		            			<div class="nameAndstatus">
+	            					<span class="name"><%= friend[:name] %></span>
+	            				</div>
+	            			<div class="invite"></div>
+	            		</div>
+	            	<% end %>
+		<% end %>
 	</div>
 </div>
 <div class="addPost" id="addPostStatus" style="display:none;">

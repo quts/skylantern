@@ -353,7 +353,7 @@ div.friendList {
   -moz-opacity: 0.8;
   filter: alpha(opacity=8);
   box-shadow: -1px 1px 2px #B3B6BD; }
-  div.friendList span {
+  div.friendList span.friendTitle {
     margin-top: 20px;
     margin-left: 20px;
     float: left;
@@ -371,26 +371,40 @@ div.friendList {
       box-shadow: -1px 1px 2px #B3B6BD;
       float: left;
       width: 350px;
+      height: 60px;
       margin: 5px;
       background: #FFFFFF;
       opacity: 0.8;
       -moz-opacity: 0.8;
-      filter: alpha(opacity=8); }
-      div.friendList div.friendData div.friend span {
-        display: inline-block;
-        vertical-align: top;
-        float: left;
-        font-size: 20px; }
+      filter: alpha(opacity=8); 
+      color:black;}
+      div.friendList div.friendData div.friend div.nameAndstatus{
+          margin-left:60px;
+          margin-top:10px;
+      }
+      div.friendList div.friendData div.friend div.nameAndstatus span.name {
+        position:absolute;
+        font-size: 20px;
+      }
+        div.friendList div.friendData div.friend div.nameAndstatus span.status{
+          position:absolute;
+          top:40px;
+          font-size: 10px;          
+        }
       div.friendList div.friendData div.friend img {
         box-shadow: -0.3px 1px 2px #B3B6BD;
         float: left;
+        margin-top:10px;
+        margin-left:10px;
         height: 40px;
         width: 40px; }
       div.friendList div.friendData div.friend div.invite {
         float: right;
         background: url(small_facebook.png);
         height: 40px;
-        width: 40px; }
+        width: 40px; 
+        margin-right:10px;
+      }
     div.friendList div.friendData div.friend:hover {
       opacity: 1;
       -moz-opacity: 1;

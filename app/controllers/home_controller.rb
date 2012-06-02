@@ -23,7 +23,6 @@ class HomeController < ApplicationController
           @friends.push(:id => friend['id'], :name => friend['name'], :in => true)  
         end      
       end
-
       #check user in db
       current_user = User.find_by_user_id(@user['id'])
       if(current_user.nil?)
@@ -32,7 +31,8 @@ class HomeController < ApplicationController
       else
           current_user.update_attribute( :friend_id, @friends )
       end
-
+      @current_user_friends = User.find_by_user_id(@user['id'])['friend_id']
+      
       #generate msg_feed
       @msg_feed = Msg.order("start_time DESC").all
 

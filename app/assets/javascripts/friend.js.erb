@@ -1,12 +1,13 @@
 $(function(){
 	var friend = $.ajax({
-		url:"index/friendinfo",
+		url:"/index/friendinfo",
 		type:"GET",
 		dataType:"json",
 		success:function(data){
 			var dataArray=data.friendinfo;
 			for(i=0;i<dataArray.length;i=i+1)
 			{
+				console.log("reload friendlist");
 				var latestid = dataArray[i][0];
 				var status= dataArray[i][2];
 				$('span#latest-' + latestid).replaceWith('<span class="status" id="latest-'+latestid+'"> '+status.substr(0,10)+'... </span>');
@@ -14,7 +15,7 @@ $(function(){
 			}
 			
 		}
-	});
+	},120000);
 	
 });
 

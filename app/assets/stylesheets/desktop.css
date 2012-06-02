@@ -377,7 +377,8 @@ div.friendList {
       opacity: 0.8;
       -moz-opacity: 0.8;
       filter: alpha(opacity=8); 
-      color:black;}
+      color:black;
+    }
       div.friendList div.friendData div.friend div.nameAndstatus{
           margin-left:60px;
           margin-top:10px;
@@ -389,6 +390,7 @@ div.friendList {
         div.friendList div.friendData div.friend div.nameAndstatus span.status{
           position:absolute;
           top:40px;
+          width:200px;
           font-size: 10px;          
         }
       div.friendList div.friendData div.friend img {

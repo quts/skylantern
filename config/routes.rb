@@ -8,6 +8,7 @@ Sky::Application.routes.draw do
   
   get '/msg_data' => 'home#msg_data'
   get '/index/reload' => 'home#reload'
+  get '/index/friendinfo' => 'home#friendinfo'
 
   get '/msg/:msg_id' => 'home#msg'
   get '/deleteMsg/:msg_id' => 'home#deleteMsg'

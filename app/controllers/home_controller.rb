@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   #get '/'
   def index
     @access_token = rest_graph.access_token
-
+    
     if @access_token
       @user = rest_graph.get('/me')
       @user_friend = rest_graph.get('/me/friends')
@@ -31,8 +31,9 @@ class HomeController < ApplicationController
       else
           current_user.update_attribute( :friend_id, @friends )
       end
-      @current_user_friends = User.find_by_user_id(@user['id'])['friend_id']
       
+      
+
       #generate msg_feed
       @msg_feed = Msg.order("start_time DESC").all
 
@@ -40,6 +41,27 @@ class HomeController < ApplicationController
       render 'out'
     end
   end
+
+  #get 'index/friendinfo' from friend.js ajax
+  def friendinfo
+    @access_token = rest_graph.access_token
+    if @access_token
+      @user = rest_graph.get('/me')
+    end
+    @friends = User.find_by_user_id(@user['id'])['friend_id']
+    result = Array.new
+    @friends.each do |friend|
+            latestMsg = Msg.order("start_time DESC").where(:user_id => friend[:id]).first
+            if(latestMsg.nil?)
+                data = [ friend[:id], friend[:name], "no latest message"]
+            else              
+                data = [ friend[:id], friend[:name], latestMsg['content']]
+            end
+            result.push(data)
+    end
+    render :json => {:friendinfo => result}.to_json
+  end
+
 
   #get '/reload' from reload.js ajax
   def reload

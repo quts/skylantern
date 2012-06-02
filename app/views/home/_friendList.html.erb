@@ -1,0 +1,32 @@
+<script type="text/javascript" src="assets/friend.js"></script>
+<div class="friendList" id="friendListStatus" style="display:none;">
+	<div class="destroy"></div>
+	<span class="friendTitle">Friends</span>
+	<div class="friendData">
+		<!-- Insert User Data here!! -->
+		<% @friends.each do |friend| %>	
+			<% if(friend[:in] == true) %>
+				<a href=<%= "/user/" + friend[:id] %>>
+					<div class="friend"> 		
+		            			<img src=https://graph.facebook.com/<%= friend[:id] %>/picture />
+		            			<div class="nameAndstatus">
+	            					<span class="name"><%= friend[:name] %></span>
+	            					<span class="status" id=<%= "latest-" + friend[:id] %>>default</span>
+	            				</div>
+	            			</div>
+	            		</a>
+	            	<% end %>
+		<% end %>
+		<% @friends.each do |friend| %>	
+			<% if(friend[:in] == false) %>
+				<div class="friend"> 		
+		            		<img src=https://graph.facebook.com/<%= friend[:id] %>/picture />
+		            			<div class="nameAndstatus">
+	            					<span class="name"><%= friend[:name] %></span>
+	            				</div>
+	            			<div class="invite"></div>
+	            		</div>
+	            	<% end %>
+		<% end %>
+	</div>
+</div>

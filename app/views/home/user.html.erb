@@ -105,53 +105,5 @@
 		<%= link_to(logout_path) do %><li class="FacebookLogout">Logout</li><% end %>
 	</ul>
 </div>
-<div class="friendList" id="friendListStatus" style="display:none;">
-	<div class="destroy"></div>
-	<span>Friends</span>
-	<div class="friendData">
-		<!-- Insert User Data here!! -->
-		<% @friends.each do |friend| %>
-			<div class="friend"> 			
-	            <img src=https://graph.facebook.com/<%= friend[:id] %>/picture />
-	            <span><%= friend[:name] %></span>
-	            <% if(friend[:in] == false) %>
-	            <div class="invite"></div>
-	            <% end %>
-	        </div>
-        <% end %>
-	</div>
-</div>
-<div class="addPost" id="addPostStatus" style="display:none;">
-	<div class="destroy"></div>
-	<span class="header">Fly Your Dream</span>
-	<div class="addPost_sky_lantern"></div>
-	<%= form_tag({:controller => "home", :action => "create"}, :method => "post", :class => "add") do %>
-	
-	<div class="addPost_title_control">
-		<div class="one_man"></div>
-		<%= text_field(:msg, :title, :placeholder => 'title') %>
-	</div>
-
-  	<%= text_area(:msg, :content, :size => "40x12", :placeholder => 'your dream...') %>
-
-  	<div class="photoUpload">
-		<img id="addPostPreviewIMG" width="130px" height="130px" style="display:none;"/>
-		<embed id="addPostPreviewVIDEO" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always"  width="200px" height="130px" style="display:none;" />
-		<%= text_field(:msg, :link, :id => 'addPostPhotoURL', :placeholder => 'Enter a photo link or a youtube link here') %>
-
-		<!-- <input id="addPostPhotoURL" type="text" placeholder="Enter a photo link or a youtube link here"/> -->
-		<h1 class="preview">preview</h1>
-	</div>
-
-  	<div class="timeset">
-  	<%= select(:msg, :timeSetSelect, options_for_select([['before', 'before'], ['after', 'after']]) ) %>
-  	<%= text_field :msg, :beforeDate, :id => 'datepicker' %>
-  	<%= text_field :msg, :afterTime, :id => 'afterpicker' %>
-  	<%= select(:msg, :afterTimeUnit, options_for_select([['minutes', 'minutes'], ['hours', 'hours'], ['days', 'days'], ['weeks', 'weeks'], ['months', 'months'], ['years', 'years']])) %>
-    </div>
-
-    <div class="checkInput"></div>
-  	<%= submit_tag("Fly", :class => "flybuttom") %>
-  
-	<% end %>
-</div>
+<%= render 'friendList' %>
+<%= render 'addPost' %>

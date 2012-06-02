@@ -16,6 +16,8 @@ $(function(){
   				var like_array = data.msg.like;
   				console.log(like_array);
   				console.log(ajax_url);
+                        console.log(data);
+
   				$('span#like_'+msg_id).replaceWith('<span class="like_count" id="like_'+msg_id+'"> '+like_array.length+' </span>');
   			}
   		});

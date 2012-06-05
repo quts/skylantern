@@ -62,6 +62,7 @@ div.feedicon {
   /*margin-right: 500px;*/
   z-index: 96; }
 
+<<<<<<< HEAD
 div.feedicon img{
   z-index: 96;
   position: absolute;
@@ -70,6 +71,38 @@ div.feedicon img{
   opacity: 0.75;
 }
 
+=======
+div.feedicon img.feedicon_img{
+  z-index: 96;
+  position: absolute;
+  top:520px;
+  /*border-style: solid;*/
+  opacity: 0.75;
+}
+
+div.feedicon div.mini_img{
+  z-index: 80;
+  position: absolute;
+  top:520px;
+  left: 9px;
+  /*border-style: solid;*/
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg); /* IE 9 */
+  -webkit-transform: rotate(45deg); /* Safari and Chrome */
+  -o-transform: rotate(45deg); /* Opera */
+  -moz-transform: rotate(45deg); /* Firefox */
+}
+
+div.feedicon div.mini_img img{
+  width: 20px;
+  height: 20px;
+}
+
+
+
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 div.lantern_color{
   z-index: 50;
   width:15px;
@@ -91,6 +124,10 @@ div.lantern_color{
   display: none;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 div.feeditem {
   font-family: 'Oxygen', sans-serif;
   box-shadow: 4px 4px 8px 1px #A6A6A6; 
@@ -177,12 +214,34 @@ div.feeditem {
       margin-bottom: 5px; }
       div.feeditem div.contentitem div.mood span {
         margin-left: 4px; }
+<<<<<<< HEAD
       div.feeditem div.contentitem div.mood span.read_more {
         margin-top: 5px;
         float: right;
         font-size: 16px; }
       div.feeditem div.contentitem div.mood div.read_more {
         margin-top: 5px;
+=======
+      div.feeditem div.contentitem div.mood a.read_more {
+        margin-top: 10px;
+        float: right;
+        font-size: 13px;
+        font-weight: bold;
+        color: #ca2b2b; }
+      div.feeditem div.contentitem div.mood a.read_more:hover {
+        opacity: 0.5;
+        -moz-opacity: 0.5;
+        filter: alpha(opacity=5); }
+      div.feeditem div.contentitem div.mood a.read_more:visited {
+        margin-top: 10px;
+        float: right;
+        font-size: 13px;
+        font-weight: bold;
+        color: #ca2b2b; }
+      div.feeditem div.contentitem div.mood div.read_more {
+        margin-top: 5px;
+        margin-left: 5px;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
         float: right;
         width: 25px;
         height: 25px;

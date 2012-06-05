@@ -2,7 +2,11 @@
 //= require jquery_ujs
 
 
+<<<<<<< HEAD
 $(function(){
+=======
+$(document).ready(function(){
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 	console.log("Javascript Work correctly.");
 	if(window.innerWidth>600){
 		function HiddenShow(id){
@@ -34,13 +38,24 @@ $(function(){
         //let lantern fly
         var windowWidth = $(window).width();
         console.log("window width :"+windowWidth);
+<<<<<<< HEAD
 		$('div.feedicon img').each(function(index) {
+=======
+		$('div.feedicon img.feedicon_img').each(function(index) {
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 			var currentId = $(this).attr('id');
 			var tempTop = $(this).position().top;
 			var tempLeft = $('div#feedicon-'+ currentId).position().left;
 
 			$(this).css('top', '520px');
+<<<<<<< HEAD
 			$(this).animate({top:tempTop},5000);
+=======
+			$(this).animate({top:tempTop},8000);
+
+			$('div#mini_img-'+ currentId).css('top', '575px');
+			$('div#mini_img-'+ currentId).animate({top:tempTop+55},8000);
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
 			var feeditem_height = $('div#feeditem-'+ currentId).css('height');
 			feeditem_height = feeditem_height.split("px");
@@ -58,7 +73,11 @@ $(function(){
 					$('div#feeditem-'+ currentId).css('left', tempLeft+36);
 				}
 				
+<<<<<<< HEAD
 				$('div#feeditem-'+ currentId).animate({top:tempTop+58-feeditem_height[0]},5000);
+=======
+				$('div#feeditem-'+ currentId).animate({top:tempTop+58-feeditem_height[0]},8000);
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
 			}
 			else{
@@ -69,11 +88,19 @@ $(function(){
 				else{
 					$('div#feeditem-'+ currentId).css('left', tempLeft+36);
 				}
+<<<<<<< HEAD
 				$('div#feeditem-'+ currentId).animate({top:tempTop+58+36},5000);
 			}
 			
 			$('div#color-'+ currentId).css('top', '540px');
 			$('div#color-'+ currentId).animate({top:tempTop+20},5000);
+=======
+				$('div#feeditem-'+ currentId).animate({top:tempTop+58+36},8000);
+			}
+			
+			$('div#color-'+ currentId).css('top', '540px');
+			$('div#color-'+ currentId).animate({top:tempTop+20},8000);
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 		});
 		//
 		var scroll = $('div.background').scrollLeft();
@@ -177,7 +204,11 @@ $(function(){
 		});
         */
         //logo menu show and hide---------------------------------------
+<<<<<<< HEAD
 		$('div.title div.logo').on('hover',function(){
+=======
+		$('div.title div.logo').on('click',function(){
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 			$('div.menu').show();
 		});
 		$('div.menu ul').on('mouseover',function(){
@@ -211,14 +242,22 @@ $(function(){
 		});
 
         */
+<<<<<<< HEAD
 		
+=======
+		/*
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 		$('input.date').on('click',function(){
 			document.getElementById('date').value = "";
 		});
 		$('input.title').on('click',function(){
 			document.getElementById('title').value = "";
 		});
+<<<<<<< HEAD
         
+=======
+        */
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
         //time set
         var original_select_status = $('select#msg_timeSetSelect').val();
 		if(original_select_status == 'before'){
@@ -247,7 +286,11 @@ $(function(){
 			 	$("#datepicker").datepicker();
 				console.log(select_status);
 			 }
+<<<<<<< HEAD
 		});
+=======
+		})
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
 		//button ------------------------------------------------------
 		$('button.like').button();
@@ -264,6 +307,7 @@ $(function(){
 			});
 		});
 
+<<<<<<< HEAD
 		// photo and video preview
 		$('div.addPost div.photoUpload h1.preview').on('click',function(){
 			var previewURL = document.getElementById('addPostPhotoURL').value;
@@ -298,6 +342,128 @@ $(function(){
 		});
 
 
+=======
+		//check title
+		$('input#msg_title').focus(function(){
+			$('div.checkInput').replaceWith('<div class="checkInput"></div>');
+			$('input.flybuttom').attr('disabled', 'disabled');
+			$(this).val("");
+			$(this).blur(function(){
+				var titleInput = $(this).val();
+				if(titleInput == ""){
+					/*
+					$('input.flybuttom').attr('disabled', 'disabled');
+					$('div.checkInput').replaceWith('<div class="checkInput">請輸入一個正確的訊息</div>');
+					//console.log("please enter your dream title");
+					*/
+				}
+				else{
+					if(($('input#datepicker').val())=="" && ($('input#afterpicker').val())==""){
+						$('input.flybuttom').attr('disabled', 'disabled');
+					}
+					else{
+						$('input.flybuttom').removeAttr('disabled');
+					}
+				}
+			});
+		});
+
+
+		//check add_post datepicker input
+		$('input#datepicker').focus(function(){
+			$('div.checkInput').replaceWith('<div class="checkInput"></div>');
+			$('input.flybuttom').attr('disabled', 'disabled');
+			$('input#datepicker').val("");
+			console.log('input datepicker!');
+			$('div#ui-datepicker-div').click(function(){
+				var dateInput = $('input#datepicker').val();
+				if(dateInput != ""){
+					console.log(dateInput);
+					var dateInputDate = new Date(dateInput);
+					dateInputDate.setHours(0);
+					dateInputDate.setMinutes(0);
+					dateInputDate.setSeconds(0);
+					console.log("dateInputDate : "+ dateInputDate);
+					var nowDate = new Date();
+					console.log("nowDate : "+ nowDate);
+					var dateInputDateSecond = dateInputDate.getTime();
+					var nowDateSecond = nowDate.getTime();
+					if((dateInputDateSecond-nowDateSecond)>0){
+						/*
+						if(($('input#msg_title').val())==""){
+							$('input.flybuttom').attr('disabled', 'disabled');
+							$('div.checkInput').replaceWith('<div class="checkInput">Please enter your dream title.</div>');
+						}
+						else{
+							console.log("future");
+							$('input.flybuttom').removeAttr('disabled');
+						}*/
+					}
+					else{
+						$('div.checkInput').replaceWith('<div class="checkInput">請使用未來時間！</div>');
+						console.log("past");
+					}
+				} 			
+			});
+		});
+
+		//check add_post afterpicker input
+		$('input#afterpicker').focus(function(){
+			$('div.checkInput').replaceWith('<div class="checkInput"></div>');
+			$('input.flybuttom').attr('disabled', 'disabled');
+			console.log('input afterpicker!');
+			$(this).blur(function(){
+				var timeInput = $(this).val();
+				console.log(timeInput);
+				var checkTimeInputFloat = parseFloat(timeInput);
+				var checkTimeInputInt = parseInt(timeInput);
+				// console.log(checkTimeInputInt);
+
+				if(checkTimeInputInt > 0){
+					//if input is integer
+					if((checkTimeInputInt-checkTimeInputFloat)==0){
+						if(($('input#msg_title').val())==""){
+							/*
+							$('input.flybuttom').attr('disabled', 'disabled');
+							$('div.checkInput').replaceWith('<div class="checkInput">Please enter your dream title.</div>');
+							*/
+						}
+						else{
+							console.log("isInt");
+							$('input.flybuttom').removeAttr('disabled');
+						}			
+					}
+					//if input is float
+					else{
+						$('input.flybuttom').attr('disabled', 'disabled');
+						$('div.checkInput').replaceWith('<div class="checkInput">Please input an integer.</div>');
+						console.log("isFloat");
+					}
+				}
+				//if input is nagative Int
+				else if(checkTimeInputInt < 0){
+					$('input.flybuttom').attr('disabled', 'disabled');
+					$('div.checkInput').replaceWith('<div class="checkInput">Please input a positive integer.</div>');
+					console.log("isNagativeInt"); 
+				}
+				//if input is String
+				else{
+					$('input.flybuttom').attr('disabled', 'disabled');
+					$('div.checkInput').replaceWith('<div class="checkInput">Error : 請輸入正確的時間！</div>');
+					console.log("isString"); 
+				} 	
+			});
+		});
+
+		$('select#msg_timeSetSelect').change(function(){
+			$('input.flybuttom').attr('disabled', 'disabled'); 
+		});
+
+
+
+
+
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 		//textarea
 		/*
 		var valueOfContent = $('textarea#msg_content').val();
@@ -334,11 +500,18 @@ $(function(){
         //console.log($sx);
 		
 		
+<<<<<<< HEAD
 	}else{
 		
 	};
 
 
+=======
+	}
+	else{
+		
+	}
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 });
 
 

@@ -13,8 +13,13 @@ div.msgBackground {
 div.msg_id {
   width: 1100px;
   height: 600px;
+<<<<<<< HEAD
   margin-left: 28px;
   margin-top: 7px;
+=======
+  margin-left: 120px;
+  margin-top: 30px;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
   border: 3px solid Black;
   border-radius: 5px;
   z-index: 99;
@@ -41,6 +46,7 @@ div.msg_id {
     div.msg_id div.left button.prev:hover {
       background: #f5f59c;
       color: #cc8b08;
+<<<<<<< HEAD
       	/*z-index: 50;
       	width:15px;
        	height:15px;
@@ -68,12 +74,46 @@ div.msg_id {
       	box-shadow: -1px -5px 50px 20px #F9F262;*/ }
     div.msg_id div.left div.profile img.feedprofile {
       /*											
+=======
+        /*z-index: 50;
+        width:15px;
+        height:15px;
+        position: absolute;
+        background-color: #F9F262;
+        top:270px;
+        left:10px;
+        border-style: none;
+        border-radius:10px;
+        opacity: 1;
+        box-shadow: -1px -5px 50px 20px #F9F262;*/ }
+    div.msg_id div.left button.next:hover {
+      background: #f5f59c;
+      color: #cc8b08;
+        /*z-index: 50;
+        width:15px;
+        height:15px;
+        position: absolute;
+        background-color: #F9F262;
+        top:270px;
+        left:10px;
+        border-style: none;
+        border-radius:10px;
+        opacity: 1;
+        box-shadow: -1px -5px 50px 20px #F9F262;*/ }
+    div.msg_id div.left div.profile img.feedprofile {
+      /*                      
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
       height: 135px; 
       width: 110px;*/
       left: 20px;
       margin-top: 35px;
       position: absolute;
+<<<<<<< HEAD
       max-width: 110px; }
+=======
+      max-width: 110px; 
+      max-height: 140px;}
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     div.msg_id div.left div.titleitem {
       background: #FFFFFF;
       width: 485px;
@@ -105,6 +145,10 @@ div.msg_id {
         font-weight: bold; }
       div.msg_id div.left div.titleitem button.name:hover {
         opacity: 0.5; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     div.msg_id div.left div.mood {
       display: inline-block;
       font-size: 13px;
@@ -123,6 +167,7 @@ div.msg_id {
         opacity: 0.5;
         -moz-opacity: 0.5;
         filter: alpha(opacity=5); }
+<<<<<<< HEAD
       div.msg_id div.left div.mood button.name {
         background: #FFFFFF;
         color: #005AB5;
@@ -130,6 +175,25 @@ div.msg_id {
         padding: 0px;
         font-weight: bold; }
       div.msg_id div.left div.mood button.name:hover {
+=======
+      div.msg_id div.left div.mood button.like {
+        /*background: #FFFFFF;*/
+        /*color: #005AB5;*/
+        /*border: 0px;*/
+        /*padding: 0px;*/
+        font-weight: bold;
+        font-size: 10px; }
+      div.msg_id div.left div.mood button.lol:hover {
+        opacity: 0.5; }
+      div.msg_id div.left div.mood button.lol {
+        /*background: #FFFFFF;*/
+        /*color: #005AB5;*/
+        /*border: 0px;*/
+        /*padding: 0px;*/
+        font-weight: bold;
+        font-size: 10px; }
+      div.msg_id div.left div.mood button.like:hover {
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
         opacity: 0.5; }
     div.msg_id div.left div.delete_feed {
       /*margin-left: 60px;
@@ -141,7 +205,11 @@ div.msg_id {
       color: #005AB5;*/
       width: 36px;
       height: 36px;
+<<<<<<< HEAD
       margin-top: 25px;
+=======
+      margin-top: 36px;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
       float: right;
       display: inline-block;
       cursor: pointer;
@@ -195,7 +263,11 @@ div.msg_id {
     height: 600px;
     display: inline-block;
     position: absolute;
+<<<<<<< HEAD
     overflow-y: scroll;
+=======
+    overflow-y: auto;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     overflow-x: hidden;
     /*background: #ffffad;*/ }
     div.msg_id div.right h1.comment {

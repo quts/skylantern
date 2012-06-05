@@ -14,11 +14,20 @@ $(function(){
   			dataType: "json",
   			success: function(data) {
   				var like_array = data.msg.like;
+<<<<<<< HEAD
   				$('span.like_count').replaceWith('<span class="like_count">'+like_array.length+'</span>');
+=======
+  				console.log(like_array);
+  				console.log(ajax_url);
+                        console.log(data);
+
+  				$('span#like_'+msg_id).replaceWith('<span class="like_count" id="like_'+msg_id+'"> '+like_array.length+' </span>');
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
   			}
   		});
 
 	});
+<<<<<<< HEAD
 /*
       $('button.CommentLike').click(function (){
         var comment_id = $(this).attr('id');
@@ -38,6 +47,8 @@ $(function(){
 
       });
 */
+=======
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 	//lol button ajax
 	$('button.lol').click(function (){
 		var msg_id = $(this).attr('id');
@@ -50,7 +61,13 @@ $(function(){
   			dataType: "json",
   			success: function(data) {
   				var lol_array = data.msg.lol;
+<<<<<<< HEAD
   				$('span.lol_count').replaceWith('<span class="lol_count">'+lol_array.length+'</span>');
+=======
+  				console.log(lol_array);
+  				console.log(ajax_url);
+  				$('span#lol_'+msg_id).replaceWith('<span class="lol_count" id="lol_'+msg_id+'"> '+lol_array.length+' </span>');
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
   			}
   		});
 

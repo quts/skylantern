@@ -1,4 +1,8 @@
 <!-- app/views/home/msg.html.erb -->
+<<<<<<< HEAD
+=======
+<!-- app/views/home/msg.html.erb -->
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 <% content_for :head do %>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
@@ -17,10 +21,17 @@
 <div class="msgBackground">
 	<div class="background"></div>
 	<div class="title">
+<<<<<<< HEAD
 		<div class="logo"><img src="../assets/title7.gif" height="100%" width="100%"/></div>
 		<div class="title_control">
 			<div class="add"></div>
 			<div class="msg"></div>
+=======
+		<div class="logo"><img src="../assets/title9.gif" height="100%" width="100%"/></div>
+		<div class="title_control">
+			<div class="add"></div>
+			<!-- <div class="msg"></div> -->
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 		</div>
 		<div class="userinfo">
 			<a href="/user/<%= @current_user['id']%>">
@@ -47,11 +58,19 @@
 			</div>
 		</div>
 		<div class="mood">		
+<<<<<<< HEAD
 			<span class="like_count"> <%= (@msg_data[:like]).count %> </span>
 			<button name="like" type="submit" class="name" id="<%= @msg_data[:msg_id]%>">Like</button>	
 			<span>|</span>
 			<span class="lol_count"> <%= (@msg_data[:lol]).count %> </span>
 			<button name="laugh" type="submit" class="name" id="<%= @msg_data[:msg_id]%>">Laugh</button>
+=======
+			<span class="like_count" id="like_<%= @msg_data[:msg_id]%>"> <%= (@msg_data[:like]).count %> </span>
+			<button name="like" type="submit" class="like"  id="<%= @msg_data[:msg_id]%>">Like</button>	
+			<span>|</span>
+			<span class="lol_count" id="lol_<%= @msg_data[:msg_id]%>"> <%= (@msg_data[:lol]).count %> </span>
+			<button name="laugh" type="submit" class="lol" id="<%= @msg_data[:msg_id]%>">Laugh</button>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 		</div>
 		<% if(@msg_data[:msg_id].split("_")[0] == @current_user['id']) %>
 			<a href=<%= "/deleteMsg/" + @msg_data[:msg_id] %>><div class="delete_feed"></div></a>
@@ -64,15 +83,30 @@
 		</div>	
 		<div class="description">
 			<p><%= @msg_data['content']%></p>
+<<<<<<< HEAD
 			<div class="donestamp"><img src="../assets/done.gif" /></div>
+=======
+			<% if(@msg_data['dead_time']<Time.now) %>
+			<div class="donestamp"><img src="../assets/done.gif" /></div>
+			<% end %>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 		</div>
 		<h2>Record</h2>
 		<div class="proof">
 			<center>
+<<<<<<< HEAD
 				<% if(@msg_data['link'].include?('youtube')) %>
 					<embed type=application/x-shockwave-flash allowfullscreen=true allowscriptaccess=always src=<%= @msg_data['link'] %>>
 				<% else %>
 					<img src=<%= @msg_data['link'] %>>
+=======
+				<% if(@msg_data['link'].nil? == false) %>
+					<% if(@msg_data['link'].include?('youtube')) %>
+						<embed type=application/x-shockwave-flash allowfullscreen=true allowscriptaccess=always src=<%= @msg_data['link'] %>>
+					<% else %>
+						<img src=<%= @msg_data['link'] %>>
+					<% end %>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 				<% end %>
 			</center>
 		</div>
@@ -88,7 +122,11 @@
 				<li>
 					<div class="listcomment">
 						<a class="pic" href="/user/<%= comment['user_id']%>"><img class="commentprofile"  src="https://graph.facebook.com/<%=comment['user_id'] %>/picture" /></a>
+<<<<<<< HEAD
 						<a class="name" href="/user/<%= comment['user_id']%>"><%= Msg.find_by_user_id(comment['user_id'])['user_name'] %></a>
+=======
+						<a class="name" href="/user/<%= comment['user_id']%>"><%= comment['user_name'] %></a>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 						<% if(comment['comment_id'].split("_")[0] == @current_user['id'] || comment['comment_id'].split("_")[2] == @current_user['id']) %>
 						<div class="delete_comment"><a href=<%= "/deleteComment/" + comment['comment_id'] %>>x</a></div>
 						<% else %>
@@ -97,9 +135,15 @@
 						<div class="commentcontent"><%= comment['content'] %></div>
 						<div class="time">
 							<% if(Time.at(Time.now - comment['time']).year - Time.at(0).year > 0) %>
+<<<<<<< HEAD
 								<%= (Time.at(Time.now - comment['time']).year - Time.at(0).year) %> yesrs ago
 							<% elsif(Time.at(Time.now - comment['time']).mon - Time.at(0).mon > 0) %>
 								<%= (Time.at(Time.now - comment['time']).mon - Time.at(0).mon) %> months ago
+=======
+								<%= (Time.at(Time.now - comment['time']).year - Time.at(0).year) %> yesrs ago ·
+							<% elsif(Time.at(Time.now - comment['time']).mon - Time.at(0).mon > 0) %>
+								<%= (Time.at(Time.now - comment['time']).mon - Time.at(0).mon) %> months ago ·
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 							<% elsif(Time.at(Time.now - comment['time']).day - Time.at(0).day > 0) %>
 								<%= (Time.at(Time.now - comment['time']).day - Time.at(0).day) %> days ago ·
 							<% elsif(Time.at(Time.now - comment['time']).hour - Time.at(0).hour > 0) %>
@@ -110,16 +154,29 @@
 								<%= (Time.at(Time.now - comment['time']).sec- Time.at(0).sec) %> secs ago ·
 							<% end %>
 						</div>
+<<<<<<< HEAD
 						<span class="number">
 							<%= (comment['like']).count %>
 						</span>
 						<button name="like" type="submit" class="name" id=<%= comment['comment_id']%>>Like</button>
+=======
+						<!--
+						<span class="number">
+							<%= (comment['like']).count %>
+						</span>
+						<button name="like" type="submit" class="like" id=<%= comment['comment_id']%>>Like</button>
+						-->
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 					</div>
 				</li>
 				<% end %>
 				<li>
 					<div class="new"><%= text_field(:comment, :content, :placeholder => 'Write a comment...') %></div>
+<<<<<<< HEAD
 					<%= submit_tag("submit") %>
+=======
+					<%= submit_tag("s", :style => "width:0px; height:0px; position:absolute;top:-10%") %>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 					<div style="display:none;">
 					<%= text_field(:comment, :msg_id, :value =>@msg_data['msg_id']) %>
 

@@ -30,8 +30,14 @@ $(function(){
 					}
 					var lantern_top = time_ratio * 520;
 					$('<div class="feedicon" id="feedicon-'+(i+1)+'">'+
+<<<<<<< HEAD
 					    '<img id="'+(i+1)+'" src="assets/lantern.gif" style="top: '+lantern_top+'px;">'+
 					    '<div class="lantern_color" id="color-'+(i+1)+'"></div>'+
+=======
+					    '<img class="feedicon_img" id="'+(i+1)+'" src="assets/lantern.gif" style="top: '+lantern_top+'px;">'+
+					    '<div class="lantern_color" id="color-'+(i+1)+'"></div>'+
+					    '<div class="mini_img" id="mini_img-'+(i+1)+'"><img src="https://graph.facebook.com/'+msg_feed[i].user_id+'/picture"></div>'+
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 					  '</div>'+
 					  '<div class="feeditem" id="feeditem-'+(i+1)+'">'+
 					  	'<div class="feeditemprofile">'+
@@ -44,11 +50,21 @@ $(function(){
 								'<span>---  after '+(msg_feed[i].dead_time - now_time_second)+' seconds</span>'+
 							'</div>'+
 					  		'<div class="mood">'+		
+<<<<<<< HEAD
 								'<span class="like_count"> '+msg_feed[i].like.length+' </span>'+
 								'<button name"like" type="submit" class="like" id="'+msg_feed[i].msg_id+'">Like</button>'+	
 								'<span>|</span>'+
 								'<span class="lol_count"> '+msg_feed[i].lol.length+' </span>'+
 								'<button name"laugh" type="submit" class="lol" id="'+msg_feed[i].msg_id+'">Laugh</button>'+
+=======
+								'<span class="like_count" id="like_'+msg_feed[i].msg_id+'"> '+msg_feed[i].like.length+' </span>'+
+								'<button name"like" type="submit" class="like" id="'+msg_feed[i].msg_id+'">Like</button>'+	
+								'<span>|</span>'+
+								'<span class="lol_count" id="lol_'+msg_feed[i].msg_id+'"> '+msg_feed[i].lol.length+' </span>'+
+								'<button name"laugh" type="submit" class="lol" id="'+msg_feed[i].msg_id+'">Laugh</button>'+
+								'<div class="read_more"></div>'+
+								'<a class="read_more" href="/msg/'+msg_feed[i].msg_id+'">read more</a>'+
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 							'</div>'+
 							'<div class="ratio">'+
 								'<div class="time_ratio">'+(100-(time_ratio*100))+'%</div>'+
@@ -64,12 +80,21 @@ $(function(){
 					*/
 				}
 				//let lantern fly
+<<<<<<< HEAD
 				$('div.feedicon img').each(function(index) {
+=======
+				$('div.feedicon img.feedicon_img').each(function(index) {
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 					console.log("refresh");
 					var currentId = $(this).attr('id');
 					var tempTop = $(this).position().top;
 					var tempLeft = $('div#feedicon-'+ currentId).position().left;
 
+<<<<<<< HEAD
+=======
+					$('div#mini_img-'+ currentId).css('top', tempTop+55);
+
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 					var feeditem_height = $('div#feeditem-'+ currentId).css('height');
 					feeditem_height = feeditem_height.split("px");
 					feeditem_height[0] = parseInt(feeditem_height[0]);
@@ -144,7 +169,13 @@ $(function(){
 			  			dataType: "json",
 			  			success: function(data) {
 			  				var like_array = data.msg.like;
+<<<<<<< HEAD
 			  				$('span.like_count').replaceWith('<span class="like_count">'+like_array.length+'</span>');
+=======
+			  				console.log(like_array);
+			  				console.log(ajax_url);
+			  				$('span#like_'+msg_id).replaceWith('<span class="like_count" id="like_'+msg_id+'"> '+like_array.length+' </span>');
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 			  			}
 			  		});
 
@@ -161,18 +192,32 @@ $(function(){
 			  			dataType: "json",
 			  			success: function(data) {
 			  				var lol_array = data.msg.lol;
+<<<<<<< HEAD
 			  				$('span.lol_count').replaceWith('<span class="lol_count">'+lol_array.length+'</span>');
+=======
+			  				console.log(lol_array);
+			  				console.log(ajax_url);
+			  				$('span#lol_'+msg_id).replaceWith('<span class="lol_count" id="lol_'+msg_id+'"> '+lol_array.length+' </span>');
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 			  			}
 			  		});
 
 				});
+<<<<<<< HEAD
 
 				
+=======
+			
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 				// alert("SUCCESS!!!");
 			},
   			error: function() {
 			alert("ERROR!!!");
 			}
 		});
+<<<<<<< HEAD
 	}, 60000);
+=======
+	}, 120000);
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 });

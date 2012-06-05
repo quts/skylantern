@@ -4,7 +4,11 @@ div.progressbar {
 }
 
 div.title {
+<<<<<<< HEAD
   z-index: 88;
+=======
+  z-index: 99;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
   float: left;
   position: fixed;
   top: 0px;
@@ -19,13 +23,24 @@ div.title {
   div.title span.logo {
     font-size: 48px; }
   div.title div.logo {
+<<<<<<< HEAD
+=======
+    cursor: pointer;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     opacity: 1;
     -moz-opacity: 1;
     filter: alpha(opacity=1);
     float: left;
+<<<<<<< HEAD
     margin-left: 10px;
     width: 210px;
     height: 45px;
+=======
+    margin-top: 3px;
+    margin-left: 10px;
+    width: 260px;
+    height: 36px;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     /*background: url(title.gif);*/
     /*background-repeat: no-repeat;*/ }
   div.title div.logo:hover {
@@ -34,11 +49,19 @@ div.title {
     filter: alpha(opacity=8); }
   div.title div.title_control {
     margin-top: 3.8px;
+<<<<<<< HEAD
     float: right;
     margin-right: 10px; }
     div.title div.title_control div.add {
       cursor: pointer;
       float: right;
+=======
+    float: left;
+    margin-left: 370px; }
+    div.title div.title_control div.add {
+      cursor: pointer;
+      /*float: right;*/
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
       margin: 0px 5px 0px 5px;
       width: 36px;
       height: 36px;
@@ -72,6 +95,10 @@ div.title {
       filter: alpha(opacity=9); }
   div.title div.userinfo {
     margin-top: 3.8px;
+<<<<<<< HEAD
+=======
+    margin-right: 40px;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     display: inline-block;
     opacity: 0.9;
     -moz-opacity: 0.9;
@@ -107,6 +134,7 @@ div.content {
 
 div.background {
   z-index: 1;
+<<<<<<< HEAD
   /*position: fixed;*/
   /*overflow: hidden;*/
   width: 100%;
@@ -117,6 +145,15 @@ div.background {
   overflow-x: auto;
   overflow-y: hidden;
   }
+=======
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: url(bg.gif);
+  background-repeat: repeat-x;
+  background-position: left bottom; }
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
 div.menu ul {
   position: absolute;
@@ -171,6 +208,7 @@ div.menu ul {
     color: #FFFFFF;
     background: #1163BB; }*/
 
+<<<<<<< HEAD
 div.addPost {
   position: absolute;
   top: 20%;
@@ -324,6 +362,8 @@ div.addPost {
   top:330px;
   }
 
+=======
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 div.friendList {
   position: absolute;
   top: 20%;
@@ -340,7 +380,11 @@ div.friendList {
   -moz-opacity: 0.8;
   filter: alpha(opacity=8);
   box-shadow: -1px 1px 2px #B3B6BD; }
+<<<<<<< HEAD
   div.friendList span {
+=======
+  div.friendList span.friendTitle {
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     margin-top: 20px;
     margin-left: 20px;
     float: left;
@@ -358,10 +402,15 @@ div.friendList {
       box-shadow: -1px 1px 2px #B3B6BD;
       float: left;
       width: 350px;
+<<<<<<< HEAD
+=======
+      height: 60px;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
       margin: 5px;
       background: #FFFFFF;
       opacity: 0.8;
       -moz-opacity: 0.8;
+<<<<<<< HEAD
       filter: alpha(opacity=8); }
       div.friendList div.friendData div.friend span {
         display: inline-block;
@@ -371,13 +420,43 @@ div.friendList {
       div.friendList div.friendData div.friend img {
         box-shadow: -0.3px 1px 2px #B3B6BD;
         float: left;
+=======
+      filter: alpha(opacity=8); 
+      color:black;
+    }
+      div.friendList div.friendData div.friend div.nameAndstatus{
+          margin-left:60px;
+          margin-top:10px;
+      }
+      div.friendList div.friendData div.friend div.nameAndstatus span.name {
+        position:absolute;
+        font-size: 20px;
+      }
+        div.friendList div.friendData div.friend div.nameAndstatus span.status{
+          position:absolute;
+          top:40px;
+          width:200px;
+          font-size: 10px;          
+        }
+      div.friendList div.friendData div.friend img {
+        box-shadow: -0.3px 1px 2px #B3B6BD;
+        float: left;
+        margin-top:10px;
+        margin-left:10px;
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
         height: 40px;
         width: 40px; }
       div.friendList div.friendData div.friend div.invite {
         float: right;
         background: url(small_facebook.png);
         height: 40px;
+<<<<<<< HEAD
         width: 40px; }
+=======
+        width: 40px; 
+        margin-right:10px;
+      }
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     div.friendList div.friendData div.friend:hover {
       opacity: 1;
       -moz-opacity: 1;

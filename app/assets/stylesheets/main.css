@@ -11,6 +11,7 @@ body {
   -moz-opacity: 1;
   filter: alpha(opacity=1); }
 
+<<<<<<< HEAD
 div.addPost div.destroy {
   cursor: pointer;
   z-index: 99;
@@ -24,6 +25,8 @@ div.addPost div.destroy {
   background-position: center center;
 }
 
+=======
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 div.friendList div.destroy {
   cursor: pointer;
   z-index: 99;

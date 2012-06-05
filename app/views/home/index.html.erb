@@ -4,6 +4,7 @@
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
   <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+<<<<<<< HEAD
   <link rel="stylesheet" type="text/css" href="assets/desktop.css" media="screen and (min-width: 620px)">
   <link rel="stylesheet" type="text/css" href="assets/main.css"/>
   <link rel="stylesheet" type="text/css" href="assets/style.css"/>
@@ -14,11 +15,25 @@
   <script type="text/javascript" src="assets/main.js"></script>
   <script type="text/javascript" src="assets/reload.js"></script>
   <script type="text/javascript" src="assets/likelol.js"></script>
+=======
+  <link rel="stylesheet" type="text/css" href="assets/desktop.css">
+  <link rel="stylesheet" type="text/css" href="assets/main.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/out.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/addpost.css?version=<%= Time.now.to_i.to_s %>"/>
+  <link rel="stylesheet" type="text/css" href="assets/jquery-ui-1.8.20.custom.css"/>
+  <!-- Scripts -->
+  <script type="text/javascript" src="assets/main.js?version=<%= Time.now.to_i.to_s %>"></script>
+  <script type="text/javascript" src="assets/addpost.js?version=<%= Time.now.to_i.to_s %>"></script>
+  <script type="text/javascript" src="assets/reload.js?version=<%= Time.now.to_i.to_s %>"></script>
+  <script type="text/javascript" src="assets/likelol.js?version=<%= Time.now.to_i.to_s %>"></script>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
   <script type="text/javascript" src="assets/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="assets/jquery-ui-1.8.20.custom.min.js"></script>
   <!-- <title>Sky Lantern</title> -->
 <% end %>
 
+<<<<<<< HEAD
 <div class="title">
 	<%= link_to(home_path) do %><div class="logo"><img src="assets/title7.gif" height="100%" width="100%"/></div><% end %>
 	<div class="title_control">
@@ -36,6 +51,25 @@
 	<div class="feed-container" style="width : <%=container_width%>px;">
 		<!-- <div class="move_right"><img src="assets/icon/arrow-right.png"></div>
 		<div class="move_left"><img src="assets/icon/arrow-left.png"></div> -->
+=======
+
+<div class="title">
+	<div class="logo"><img src="assets/title9.gif" height="100%" width="100%"/></div>
+	<div class="title_control">
+		<div class="add"></div>
+		<!-- <div class="msg"></div> -->
+	</div>
+	<div class="userinfo">
+		<a href="/user/<%= @user['id']%>"><span id="UserName"><%= @user['name'] %></span></a>
+		<img id="UserPhoto" src="https://graph.facebook.com/<%= @user['id']%>/picture" height="36px" width="36px"/>
+	</div>
+</div>
+<div class="background">
+	<% container_width = (@msg_feed.count) * 62 + 60 %>
+	<div class="feed-container" style="width : <%=container_width%>px;">
+		<div class="move_right"><img src="assets/icon/arrow-right.png"></div>
+		<div class="move_left"><img src="assets/icon/arrow-left.png"></div>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 	    <% index = 1 %>
 		<% @msg_feed.each do |msg| %>
 			<% now_time = Time.now %>
@@ -45,7 +79,17 @@
 				time_ratio = 0
    			   end %>
 			<% lantern_top = time_ratio * 520 %>
+<<<<<<< HEAD
 		<div class="feedicon" id="feedicon-<%= index %>"><img id="<%= index %>" src="assets/lantern.gif" style="top: <%=lantern_top%>px;"><div class="lantern_color" id="color-<%= index %>"></div></div>
+=======
+		<div class="feedicon" id="feedicon-<%= index %>">
+			<img class="feedicon_img" id="<%= index %>" src="assets/lantern.gif" style="top: <%=lantern_top%>px;">
+			<div class="lantern_color" id="color-<%= index %>"></div>
+			
+			<div class="mini_img" id="mini_img-<%= index %>"><img src="https://graph.facebook.com/<%= msg[:user_id]%>/picture"></div>
+			
+		</div>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 		<div class="feeditem" id="feeditem-<%= index %>">
 			<div class="feeditemprofile">
 				<a href="/user/<%= msg[:user_id]%>"><img class="feedprofile" src="https://graph.facebook.com/<%= msg[:user_id]%>/picture"></a>
@@ -54,6 +98,7 @@
 			<div class="contentitem">
 				<div class="feeditemtitle"><%= msg[:title] %></div>
 				<div class="feeditemtime">
+<<<<<<< HEAD
 					<span>---  after <%=(msg[:dead_time] - now_time).round%> seconds</span>
 				</div>
 				<div class="mood">		
@@ -64,6 +109,37 @@
 					<button name"laugh" type="submit" class="lol" id="<%= msg[:msg_id]%>">Laugh</button>
 					<div class="read_more"></div>
 					<span class="read_more">read more</span>
+=======
+					<% @overTime = msg[:dead_time].to_i - Time.now.to_i %>
+					<% if(@overTime > 0) %>
+						<% if(Time.at(@overTime).year-Time.at(0).year > 0) %>
+							<% @overTimeText = "--- after " + (Time.at(@overTime).year-Time.at(0).year).to_s + " year (s)" %>
+						<% elsif(Time.at(@overTime).mon-Time.at(0).mon > 0) %>
+            				<% @overTimeText = "--- after " + (Time.at(@overTime).mon-Time.at(0).mon).to_s + " month (s)" %>
+        				<% elsif(Time.at(@overTime).day-Time.at(0).day > 0) %>
+            				<% @overTimeText = "--- after " + (Time.at(@overTime).day-Time.at(0).day).to_s + " day (s)" %>
+        				<% elsif(Time.at(@overTime).hour-Time.at(0).hour > 0) %>
+            				<% @overTimeText = "--- after " + (Time.at(@overTime).hour-Time.at(0).hour).to_s + " hour(s)" %>
+        				<% elsif(Time.at(@overTime).min-Time.at(0).min > 0) %>
+            				<% @overTimeText = "--- after " + (Time.at(@overTime).min-Time.at(0).min).to_s + " minute (s)" %>
+        				<% else %>
+           					<% @overTimeText = "--- after " + (Time.at(@overTime).sec-Time.at(0).sec).to_s + " sec (s)" %>
+        				<% end %>
+    				<% else %>
+        				<% @overTimeText = "--- done at " + msg[:dead_time].to_s %>
+    				<% end %>
+
+					<span><%= @overTimeText %></span>
+				</div>
+				<div class="mood">		
+					<span class="like_count" id="like_<%= msg[:msg_id]%>"> <%= (msg[:like]).count %> </span>
+					<button name"like" type="submit" class="like" id="<%= msg[:msg_id]%>">Like</button>	
+					<span>|</span>
+					<span class="lol_count" id="lol_<%= msg[:msg_id]%>"> <%= (msg[:lol]).count %> </span>
+					<button name"laugh" type="submit" class="lol" id="<%= msg[:msg_id]%>">Laugh</button>
+					<div class="read_more"></div>
+					<a class="read_more" href="/msg/<%= msg[:msg_id] %>">read more</a>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 				</div>
 				<div class="ratio">
 					<div class="time_ratio"><%=100-(time_ratio*100)%>%</div>
@@ -74,9 +150,14 @@
 		<% index += 1 %>
 		<% end %>	
 	</div>
+<<<<<<< HEAD
 </div>
 
 
+=======
+
+</div>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 <div class="menu" id="TitleMenuStatus" style="display:none;">
 	<ul>
 		<%= link_to(home_path) do %><li>News Feeds</li><% end %>
@@ -85,6 +166,7 @@
 		<%= link_to(logout_path) do %><li class="FacebookLogout">Logout</li><% end %>
 	</ul>
 </div>
+<<<<<<< HEAD
 <div class="friendList" id="friendListStatus" style="display:none;">
 	<div class="destroy"></div>
 	<span>Friends</span>
@@ -137,3 +219,7 @@
 	<% end %>
 </div>
 
+=======
+<%= render 'friendList' %>
+<%= render 'addPost' %>
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b

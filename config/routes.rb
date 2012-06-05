@@ -8,10 +8,19 @@ Sky::Application.routes.draw do
   
   get '/msg_data' => 'home#msg_data'
   get '/index/reload' => 'home#reload'
+<<<<<<< HEAD
+=======
+  get '/index/friendinfo' => 'home#friendinfo'
+  get '/index/titleinfo' => 'home#titleinfo'
+
+  get '/msg/:msg_id' => 'home#msg'
+  get '/deleteMsg/:msg_id' => 'home#deleteMsg'
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
   get '/like/:msg_id' => 'home#like'
   get '/lol/:msg_id' => 'home#lol'
 
+<<<<<<< HEAD
   get '/msg/:msg_id' =>'home#msg'
 
   get '/commentCreat' => 'home#add'
@@ -19,10 +28,22 @@ Sky::Application.routes.draw do
 
    get '/CommentLike/:comment_id' => 'home#CommentLike'
    get '/deleteComment/:comment_id' => 'home#deleteComment'
+=======
+  get '/commentCreat' => 'home#add'
+  post '/commentCreat' => 'home#commentCreat'
+
+  get '/deleteComment/:comment_id' => 'home#deleteComment'
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
   get '/add' => 'home#add'
   post '/add' => 'home#create' 
 
+<<<<<<< HEAD
+=======
+
+get '/addtest' => 'home#_addPost'
+
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

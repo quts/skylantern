@@ -8,7 +8,11 @@ class HomeController < ApplicationController
   #get '/'
   def index
     @access_token = rest_graph.access_token
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     if @access_token
       @user = rest_graph.get('/me')
       @user_friend = rest_graph.get('/me/friends')
@@ -23,7 +27,10 @@ class HomeController < ApplicationController
           @friends.push(:id => friend['id'], :name => friend['name'], :in => true)  
         end      
       end
+<<<<<<< HEAD
 
+=======
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
       #check user in db
       current_user = User.find_by_user_id(@user['id'])
       if(current_user.nil?)
@@ -32,10 +39,16 @@ class HomeController < ApplicationController
       else
           current_user.update_attribute( :friend_id, @friends )
       end
+<<<<<<< HEAD
+=======
+      
+      
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
       #generate msg_feed
       @msg_feed = Msg.order("start_time DESC").all
 
+<<<<<<< HEAD
 
     else
       redirect_to '/out.html'
@@ -91,6 +104,47 @@ def commentCreat
     new_comment.save
     redirect_to '/msg/' + @comment['msg_id']
 end
+=======
+    else
+      render 'out'
+    end
+  end
+
+  #get 'index/friendinfo' from friend.js ajax
+  def friendinfo
+    @access_token = rest_graph.access_token
+    if @access_token
+      @user = rest_graph.get('/me')
+    end
+    @friends = User.find_by_user_id(@user['id'])['friend_id']
+    result = Array.new
+    @friends.each do |friend|
+            latestMsg = Msg.order("start_time DESC").where(:user_id => friend[:id]).first
+            if(latestMsg.nil?)
+                data = [ friend[:id], friend[:name], "no latest message"]
+            else              
+                data = [ friend[:id], friend[:name], latestMsg['content']]
+            end
+            result.push(data)
+    end
+    render :json => {:friendinfo => result}.to_json
+  end
+
+  def titleinfo
+    @access_token = rest_graph.access_token
+    if @access_token
+      @user = rest_graph.get('/me')
+    end
+    @titles = Msg.where(:user_id => @user['id'])
+    result = Array.new
+    @titles.each do |title|
+            if(title['title']!="")
+                  result.push(title['title'])
+            end
+    end
+    render :json => {:titles => result}.to_json
+  end
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
   #get '/reload' from reload.js ajax
   def reload
@@ -171,6 +225,7 @@ end
 
   end
 
+<<<<<<< HEAD
 
   def add
   end
@@ -181,6 +236,69 @@ def deleteComment
   end
     redirect_to '/msg/' + params[:comment_id].split("_")[0].to_s + "_" + params[:comment_id].split("_")[1].to_s
 end
+=======
+  # get 'msg/:msg_id'
+  def msg
+    #找尋現在的User是誰
+    @current_user = rest_graph.get('/me')
+    #載入msg的資料
+    @msg_data = Msg.find_by_msg_id(params[:msg_id])
+    #計算結束時間
+    @overTime = @msg_data[:dead_time].to_i - Time.now.to_i
+    if(@overTime > 0)
+        if(Time.at(@overTime).year-Time.at(0).year > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).year-Time.at(0).year).to_s + "year(s)"
+        elsif(Time.at(@overTime).mon-Time.at(0).mon > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).mon-Time.at(0).mon).to_s + "month(s)"
+        elsif(Time.at(@overTime).day-Time.at(0).day > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).day-Time.at(0).day).to_s + "day(s)"
+        elsif(Time.at(@overTime).hour-Time.at(0).hour > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).hour-Time.at(0).hour).to_s + "hour(s)"
+        elsif(Time.at(@overTime).min-Time.at(0).min > 0)
+            @overTimeText = "--- after " + (Time.at(@overTime).min-Time.at(0).min).to_s + "minute(s)"
+        else
+            @overTimeText = "--- after " + (Time.at(@overTime).sec-Time.at(0).sec).to_s + "sec(s)"
+        end
+    else
+        @overTimeText = "--- done at " + @msg_data[:dead_time].to_s
+    end
+    #載入comment的資料
+    @comment_data = Comment.where(:msg_id => params[:msg_id])
+  end
+
+  def deleteMsg
+    if(params[:msg_id].split("_")[0] == rest_graph.get('/me')['id'])
+      Msg.find_by_msg_id(params[:msg_id]).destroy
+    end
+      redirect_to '/'
+  end
+
+  def commentCreat
+    @comment = params[:comment]
+    @current_time = Time.now.to_i.to_s
+    new_comment = Comment.new(
+      comment_id: @comment['msg_id'] +  "_" + rest_graph.get('/me')['id'] + "_" + @current_time.to_i.to_s ,
+      msg_id: @comment['msg_id'], 
+      user_id: rest_graph.get('/me')['id'],
+      user_name: rest_graph.get('/me')['name'],
+      time: Time.now, 
+      content: @comment['content'],
+      like: []
+    )
+    new_comment.save
+    redirect_to '/msg/' + @comment['msg_id']
+  end
+
+  def deleteComment
+    if(params[:comment_id].split("_")[2] == rest_graph.get('/me')['id'] || params[:comment_id].split("_")[0] == rest_graph.get('/me')['id'])
+      Comment.find_by_comment_id(params[:comment_id]).destroy
+    end
+      redirect_to '/msg/' + params[:comment_id].split("_")[0].to_s + "_" + params[:comment_id].split("_")[1].to_s
+  end
+
+  def add
+  end
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
   def create
     @msg = params[:msg]
@@ -189,7 +307,11 @@ end
     @user_id = user['id']
     @user_name = user['name']
     @msg_id = @user_id.to_s + "_" + @now_time.to_i.to_s
+<<<<<<< HEAD
 
+=======
+    @TagFriend = @msg[:friendTagList].split(",")
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
 
     if(@msg[:timeSetSelect] == "before")
       @beforeDate = (@msg[:beforeDate]).split('-')
@@ -222,7 +344,10 @@ end
     lol = Array.new
     vote_yes = Array.new
     vote_no = Array.new
+<<<<<<< HEAD
 
+=======
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
     new_msg = Msg.new(:msg_id => @msg_id,
                       :user_id => @user_id,
                       :user_name => @user_name,
@@ -240,6 +365,7 @@ end
                       )
     if(new_msg.save)
       if(params[:pushToFB])
+<<<<<<< HEAD
             rest_graph.old_rest('stream.publish',{
                     :message    => '我在SkyLantern許了一個願，快來看！！！',#這裡塞固定訊息              
                     :attachment =>{
@@ -250,6 +376,30 @@ end
                               :type => 'image',
                               :src  => 'http://skylantern.herokuapp.com/assets/title.gif',#這裡塞msg的圖片
                               :href => 'http://skylantern.herokuapp.com/msg' + @msg_id}] #這裡塞msg的link
+=======
+            if(@TagFriend.length>0)
+                  msgToFB = 'Chung-Lun Lee我在SkyLantern許了一個願，快來看！！！'
+            else
+                  msgToFB = '我在SkyLantern許了一個願，快來看！！！'
+            end
+            rest_graph.old_rest('stream.publish',{
+                    :message    => msgToFB,#這裡塞固定訊息         
+                    :message_tags_tags =>{"0"=>[{
+                                          :id => "100000193582969", 
+                                          :name=> "Chung-Lun Lee", 
+                                          :type=>"user", 
+                                          :offset =>"0", 
+                                          :length =>"Chung-Lun Lee".length
+                                          }]}.to_json,    
+                    :attachment =>{ 
+                            :name => @msg[:title],#這裡塞msg的title
+                            :href => 'http://skylantern.herokuapp.com/msg/' + @msg_id,#這裡塞msg的link                    
+                            :caption => @msg[:content],#這裡塞msg的content
+                            :media =>[{
+                              :type => 'image',
+                              :src  => 'http://skylantern.herokuapp.com/assets/login3.jpg',#這裡塞msg的圖片
+                              :href => 'http://skylantern.herokuapp.com/msg/' + @msg_id}] #這裡塞msg的link
+>>>>>>> be36e74b3bef665d0c329161b7e82cde4d9f327b
                               }.to_json,
                   :action_links => [{
                     :text => 'Publish from Sky Lantern',

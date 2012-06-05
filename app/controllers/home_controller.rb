@@ -225,7 +225,7 @@ class HomeController < ApplicationController
     @user_id = user['id']
     @user_name = user['name']
     @msg_id = @user_id.to_s + "_" + @now_time.to_i.to_s
-
+    @TagFriend = @msg[:friendTagList].split(",")
 
     if(@msg[:timeSetSelect] == "before")
       @beforeDate = (@msg[:beforeDate]).split('-')
@@ -258,7 +258,6 @@ class HomeController < ApplicationController
     lol = Array.new
     vote_yes = Array.new
     vote_no = Array.new
-
     new_msg = Msg.new(:msg_id => @msg_id,
                       :user_id => @user_id,
                       :user_name => @user_name,
@@ -276,9 +275,21 @@ class HomeController < ApplicationController
                       )
     if(new_msg.save)
       if(params[:pushToFB])
+            if(@TagFriend.length>0)
+                  msgToFB = 'Chung-Lun Lee我在SkyLantern許了一個願，快來看！！！'
+            else
+                  msgToFB = '我在SkyLantern許了一個願，快來看！！！'
+            end
             rest_graph.old_rest('stream.publish',{
-                    :message    => '我在SkyLantern許了一個願，快來看！！！',#這裡塞固定訊息              
-                    :attachment =>{
+                    :message    => msgToFB,#這裡塞固定訊息         
+                    :message_tags_tags =>{"0"=>[{
+                                          :id => "100000193582969", 
+                                          :name=> "Chung-Lun Lee", 
+                                          :type=>"user", 
+                                          :offset =>"0", 
+                                          :length =>"Chung-Lun Lee".length
+                                          }]}.to_json,    
+                    :attachment =>{ 
                             :name => @msg[:title],#這裡塞msg的title
                             :href => 'http://skylantern.herokuapp.com/msg/' + @msg_id,#這裡塞msg的link                    
                             :caption => @msg[:content],#這裡塞msg的content

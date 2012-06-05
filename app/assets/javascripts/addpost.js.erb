@@ -55,16 +55,17 @@ $(document).ready(function(){
 								TagArray[tagcount] = [friendID,friendNAME];
 								tagcount++;
 								$('div.show_list ol').replaceWith('<ol></ol>');
-								document.getElementById('divTagFriend').value = "";
+								document.getElementById('msg_friendTagList').value = "";
 								for(k=0;k<tagcount;k++)
 								{
 									var obj=$(' <li class="show_list_subset" value='+ TagArray[k][0] +'><span class="showFriendName"><span class="cancelTag">X</span>' + TagArray[k][1] + '</span><br /></li>');
 									$('div.show_list ol').append(obj);
-									document.getElementById('divTagFriend').value = TagArray[k][0] + "," + document.getElementById('divTagFriend').value;
+									document.getElementById('msg_friendTagList').value = TagArray[k][0] + "," + document.getElementById('msg_friendTagList').value;
 								}
 							}
 							$('span.cancelTag').on('click',function(){
-								var targetToremove = document.getElementById('divTagFriend').value;
+								//var targetToremove = document.getElementById('divTagFriend').value;
+								var targetToremove = $(this).parents().filter('li').val();
 								$(this).parents().filter('li').remove();
 								//尋找目標
 								var targetPosition;
@@ -78,10 +79,10 @@ $(document).ready(function(){
 								//刪除目標
 								TagArray.splice(targetPosition,1);
 								//重新整理傳送到後台的資料
-								document.getElementById('divTagFriend').value = "";
+								document.getElementById('msg_friendTagList').value = "";
 								for(k=0;k<tagcount;k++)
 								{
-									document.getElementById('divTagFriend').value = TagArray[k][0] + "," + document.getElementById('divTagFriend').value;
+									document.getElementById('msg_friendTagList').value = TagArray[k][0] + "," + document.getElementById('msg_friendTagList').value;
 								}
 								//console.log(document.getElementById('divTagFriend').value);						
 							});

@@ -11,24 +11,28 @@ body {
   -moz-opacity: 1;
   filter: alpha(opacity=1); }
 
-input.destroy {
+div.addPost div.destroy {
+  cursor: pointer;
   z-index: 99;
-  font-family: clear;
-  font-size: 10px;
-  float: right;
-  background: #000000;
-  color: #FFFFFF;
-  padding: 5px;
-  border-radius: 100px;
-  -moz-border-radius: 100px;
-  -webkit-border-radius: 100px;
-  border: 0px; }
+  position: absolute;
+  background: url(close_button.png);
+  top:-18px;
+  left:580px;
+  width:36px;
+  height:36px;
+  background-repeat:no-repeat;
+  background-position: center center;
+}
 
-input.destroy:active {
-  color: black;
-  background: white; }
-
-input.destroy:hover {
-  opacity: 0.8;
-  -moz-opacity: 0.8;
-  filter: alpha(opacity=8); }
+div.friendList div.destroy {
+  cursor: pointer;
+  z-index: 99;
+  position: absolute;
+  background: url(close_button.png);
+  top:-18px;
+  left:780px;
+  width:36px;
+  height:36px;
+  background-repeat:no-repeat;
+  background-position: center center;
+}

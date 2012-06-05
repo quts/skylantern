@@ -11,13 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516131939) do
+ActiveRecord::Schema.define(:version => 20120530010821) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "comment_id"
+    t.string   "msg_id"
+    t.string   "user_id"
+    t.datetime "time"
+    t.text     "content"
+    t.text     "like"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "msgs", :force => true do |t|
+    t.string   "msg_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "start_time"
+    t.datetime "dead_time"
+    t.text     "like"
+    t.text     "lol"
+    t.text     "vote_yes"
+    t.text     "vote_no"
+    t.text     "conclusion"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "user_id"
+    t.string   "color"
+    t.string   "user_name"
+    t.string   "link"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "user_id"
-    t.text     "friend_id",  :limit => 255
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.text     "friend_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

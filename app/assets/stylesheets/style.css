@@ -1,23 +1,106 @@
+div.feed-container{
+  margin-top: 65.5px;
+  margin-left: 60px;
+  height: 560px;
+  /*width: 200%;*/
+  /*overflow: scroll;*/
+}
+
+div.move_right{
+  width: 60px;
+  height: 560px;
+  position: fixed;
+  right: 0px;
+  z-index: 98;
+  background-color: #D8F5FD;
+  opacity: 0;
+}
+
+div.move_left{
+  width: 60px;
+  height: 560px;
+  position: fixed;
+  left: 0px;
+  z-index: 98;
+  background-color: #D8F5FD;
+  opacity: 0;
+}
+
+
+div.move_right img{
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top:250px;
+}
+
+div.move_left img{
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top:250px;
+}
+
+
 div.feedicon {
+  /*margin-top:0px;*/
+  position: relative;
+  margin:0 20px 0 0px;
+  /*padding:0 10px 0 10px;*/
   /*border-style: solid;*/
+  /*border-width:1px;*/
+  float:left;
+  /*display: block;*/
+  /*white-space: nowrap;*/
   /*vertical-align: middle;*/
-  width: 50px;
-  margin-top: 250px;
+  top: 0px;
+  height: 560px;
+  width: 40px;
+  /*margin-top: 300px;*/
   /*margin-top: 25%;*/
-  margin-left: 500px;
   /*margin-left: 25%;*/
   /*margin-right: 500px;*/
-  z-index: 98; }
+  z-index: 96; }
+
+div.feedicon img{
+  z-index: 96;
+  position: absolute;
+  top:520px;
+  border-style: solid;
+  opacity: 0.75;
+}
+
+div.lantern_color{
+  z-index: 50;
+  width:15px;
+  height:15px;
+  position: absolute;
+  background-color: #F9F262;
+  /*background-color: #EF0625;*/
+  top:270px;
+  left:10px;
+  border-style: none;
+  /*border-width:1px;*/
+  /*border-top-right-radius:20px;*/
+  /*border-top-left-radius:20px;*/
+  /*border-bottom-left-radius:70px;*/
+  /*border-bottom-right-radius:60px;*/
+  border-radius:10px;
+  opacity: 1;
+  box-shadow: -1px -5px 50px 20px #F9F262;
+  display: none;
+}
 
 div.feeditem {
   font-family: 'Oxygen', sans-serif;
-  box-shadow: -0.3px 1px 20px #B3B6BD; 
+  box-shadow: 4px 4px 8px 1px #A6A6A6; 
   z-index: 97;
   display: none;
-  background: #FFFFFF;
+  background: url('out_bg2.gif');
   border-radius: 10px;
-  border: 2px solid #d0d0d0;
-  margin-left: 520px;
+  border: 1px solid #d0d0d0;
+  position: absolute;
+  /*margin-left: 520px;*/
   /*margin-top: 20px;*/
   /*height: 300px;*/
   width: 400px;
@@ -27,67 +110,99 @@ div.feeditem {
   div.feeditem a {
     text-decoration: none; }
   div.feeditem button.prev {
-    background: #FFFFFF;
+    /*background: #FFFFFF;*/
     border: 0px;
     float: left; }
   div.feeditem button.next {
-    background: #FFFFFF;
+    /*background: #FFFFFF;*/
     border: 0px;
     float: right; }
   div.feeditem button.prev:hover {
-    background: #000000;
+    /*background: #000000;*/
     color: #FFFFFF; }
   div.feeditem button.next:hover {
-    background: #000000;
+    /*background: #000000;*/
     color: #FFFFFF; }
-  div.feeditem img.feedprofile {
+
+  div.feeditem div.feeditemprofile img.feedprofile {
+    float: left;
     box-shadow: -0.3px 1px 2px #B3B6BD;
-    margin-left: 4px;
-    height: 105px;
-    width: 85px; }
+    margin-top: 16px;
+    margin-left: 16px;
+    height: 60px;
+    width: 60px; }
+  div.feeditem div.feeditemprofile h1 {
+    color: #005AB5;
+    float: left;
+    font-weight: bold;
+    margin-top: 17px;
+    margin-left: 6px; }
+  div.feeditem div.feeditemprofile h1:hover {
+    opacity: 0.5;
+    -moz-opacity: 0.5;
+    filter: alpha(opacity=5); }
+
   div.feeditem img.commentprofile {
     box-shadow: -0.3px 1px 2px #B3B6BD; 
     margin-left: 4px;
     height: 45px;
     width: 40px; }
+
   div.feeditem div.contentitem {
-    background: #FFFFFF;
-    width: 295px;
-    float: top;
-    margin-left: 4px;
-    margin-right: 4px;
+    /*background: #FFFFFF;*/
+    width: 300px;
+    /*float: top;*/
+    margin-left: 8px;
+    margin-bottom: 8px;
     top: 0px;
     display: inline-block;
     vertical-align: top; }
-    div.feeditem div.contentitem h1 {
-      color: #005AB5;
-      font-weight: bold;
-      padding-bottom: 10px; }
-    div.feeditem div.contentitem h1:hover {
-      opacity: 0.5;
-      -moz-opacity: 0.5;
-      filter: alpha(opacity=5); }
     div.feeditem div.contentitem button {
-      background: #FFFFFF;
-      color: #005AB5;
+      /*background: #FFFFFF;*/
+      color: #1959C8;
       border: 0px;
       padding: 0px;
       font-weight: bold; }
     div.feeditem div.contentitem button:hover {
       opacity: 0.5; }
-    div.feeditem div.contentitem div.content {
+    div.feeditem div.contentitem div.feeditemtitle {
       padding-top: 5px; }
     div.feeditem div.contentitem div.feeditemtime {
       opacity: 0.5;
-      text-align: center;
+      text-align: right;
       padding-top: 5px; }
     div.feeditem div.contentitem div.mood {
       font-size: 12px;
-      margin-top: 10px; }
+      margin-top: 10px;
+      margin-bottom: 5px; }
       div.feeditem div.contentitem div.mood span {
         margin-left: 4px; }
+      div.feeditem div.contentitem div.mood span.read_more {
+        margin-top: 5px;
+        float: right;
+        font-size: 16px; }
+      div.feeditem div.contentitem div.mood div.read_more {
+        margin-top: 5px;
+        float: right;
+        width: 25px;
+        height: 25px;
+        background: url('icon/more2.png'); }
+    div.feeditem div.contentitem div.ratio {
+      width: 300px;
+      height: 45px; }
+      div.feeditem div.contentitem div.ratio div.time_ratio {
+        width: 25px;
+        margin-top: 10px; 
+        margin-bottom: 10px;
+        margin-left: 3px; 
+        float: left; }
+      div.feeditem div.contentitem div.ratio div.progressbar {
+        float: right;
+        width: 230px;
+        margin-top: 10px; 
+        margin-bottom: 10px; }
     div.feeditem div.contentitem div.comment {
-      background: #F0F0F0;
+      /*background: #F0F0F0;*/
       margin-top: 10px;
       margin-bottom: 5px;
       padding: 4px; }
@@ -109,7 +224,7 @@ div.feeditem {
         display: inline-block;
         opacity: 0.5; }
       div.feeditem div.contentitem div.comment form.comment button {
-        background: #F0F0F0;
+        /*background: #F0F0F0;*/
         color: #005AB5;
         border: 0px;
         padding: 0px;

@@ -1,0 +1,335 @@
+@mixin buttonhover{
+		background: #f5f59c;
+		color: #cc8b08;
+		/*z-index: 50;
+		width:15px;
+	 	height:15px;
+		position: absolute;
+		background-color: #F9F262;
+		top:270px;
+		left:10px;
+		border-style: none;
+		border-radius:10px;
+		opacity: 1;
+		box-shadow: -1px -5px 50px 20px #F9F262;*/
+	}
+
+@mixin title{
+	h1{
+		color: #005AB5;
+		width: 400px;
+		font-weight: bold;
+		padding-bottom: 10px;
+	}
+	h1:hover{
+		opacity: 0.5;
+		-moz-opacity: 0.5;
+		filter:alpha(opacity=5);
+	}
+	button.name{
+		background: #FFFFFF;
+		color: #005AB5;
+		border: 0px;
+		padding: 0px;
+		font-weight: bold;
+	}
+	button.name:hover{
+		opacity: 0.5;
+	}
+}
+
+$color: #ffffad;
+
+a:visited{
+color: #005AB5;
+}
+a{
+	text-decoration: none;
+}
+
+div.msgBackground{
+	/*opacity: 0.8;
+	-moz-opacity: 0.8;
+	filter:alpha(opacity=8);*/
+	z-index:5;
+}
+
+div.msg_id{
+	width: 1100px;
+	height: 600px;
+	margin-left: 28px;
+	margin-top: 7px;
+	border: 3px solid Black;
+	border-radius:5px;
+	z-index: 99;
+	position: absolute;
+	background: white;
+	div.left{
+		width: 700px;
+		height: 600px;
+		border-right: 1px inset #757575;
+		display: inline-block;
+		position: absolute;
+
+		button.prev{
+			background: #FFFFFF;
+			border: 0px;
+			border-radius:5px;
+			float: left;
+			font-size: 15px;
+		}
+		button.next{
+			background: #FFFFFF;
+			border: 0px;
+			border-radius:5px;
+			float: right;	
+			font-size: 15px;
+		}
+		button.prev:hover{
+			@include buttonhover
+		}
+		button.next:hover{
+			@include buttonhover
+		}
+		div.profile img.feedprofile{
+			/*											
+			height: 135px; 
+			width: 110px;*/
+			left: 20px;
+			margin-top: 35px;
+			position: absolute;
+			max-width: 110px;
+		}
+		div.titleitem{
+			background: #FFFFFF;
+			width: 485px;
+			margin-left: 85px;
+			margin-top: 35px;
+			display: inline-block;
+			vertical-align: top;
+
+			div.content{
+				padding-top: 5px;
+				margin-left: 10px;
+			}
+			div.feeditemtime{
+				opacity: 0.5;
+				text-align: center;
+				padding-top: 10px;
+			}
+			@include title
+		}
+		div.mood{
+			display: inline-block;
+			font-size: 13px;
+			/*position: absolute;*/
+			margin-top: 32px;
+			margin-left: 145px;
+			vertical-align: bottom;
+			span{
+				margin-left: 4px;
+			}
+			@include title
+		}
+		div.delete_feed{
+			/*margin-left: 60px;
+			float: right;
+			position: absolute;
+			display: inline-block;
+			border-radius: 8px;
+			background: #FFFFFF;
+			color: #005AB5;*/
+			width:36px;
+			height:36px;
+			margin-top: 25px;
+			float: right;
+			display: inline-block;			
+			cursor: pointer;
+		    z-index: 99;
+            background-position: center center;
+		    background: url(trashcan3.png);
+		    background-repeat: no-repeat;
+			}
+		div.line{
+			margin: 10px 10px;
+			border-bottom: 2px inset #757575;
+		}
+		div.vote{
+			/*margin-top: 10px;*/
+			text-align: center;
+			width: 700px;
+			border-top: 1px inset #757575;
+			border-bottom: 1px inset #757575;
+		}
+		div.description{
+			/*margin-top: 10px;*/
+			/*margin-left: 20px;*/
+			width: 700px;
+			height: 130px;
+			/*border-top: 1px inset #757575;*/
+			/*border-bottom: 1px inset #757575;*/
+			/*background: $color;*/
+			p{
+				padding: 0px 10px;
+			}
+			div.donestamp{
+				img{
+					max-width: 100px;
+					max-height: 100px;
+					margin-top: 5px;
+					float: right;
+					margin-right: 30px;
+					position: relative;
+				}
+			}
+		}
+		h2{
+			text-align: center;
+			border-bottom: 1px inset #757575;
+			border-top: 1px inset #757575;
+			width: 200px;
+			margin-left: 250px;
+			background: #F0F0F0;
+		}
+		div.proof{
+			/*background: $color;*/
+			margin-top: 10px;
+			/*margin-left: 200px;*/
+			img{
+				max-width: 300px;
+				max-height: 200px;
+			}
+		}
+	}
+
+	div.right{
+		margin-left: 701px;
+		width: 399px;
+		height: 600px;
+		display: inline-block;
+		position: absolute;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		/*background: #ffffad;*/
+
+		h1.comment{
+			font: 125% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+			margin: 5px 0px 0px 150px;
+			/*float: right;*/
+			text-align: center;
+		}
+
+		div.quit{
+			display: inline-block;
+			float: right;
+			/*text-align: left;*/
+			position: relative;
+			padding: 2px 2px 5px 15px;
+			margin-right: 8px;
+			a{
+				width: 15px;
+				height: 15px;
+				color: black;
+			}
+			a:hover{
+				font-size: 20px;
+				font-weight: 20;
+				font-style: bold;
+			}
+			/*border-radius: 5px;*/
+		}
+
+		div.comment{
+			background: #F0F0F0;
+			margin: 8px 5px 5px 5px;
+			padding: 4px;	
+			border-radius: 5px;
+	
+			form.comment{
+				div.listcomment{
+					border-bottom: 2px solid;
+ 					border-color: rgba(0,0,0,0.2);
+					/*border-bottom: 1px inset #757575;
+					border-color: #8c8c8c;*/
+					padding: 5px 0px;
+					div.delete_comment{
+						display: inline-block;
+						float: right;
+						position: relative;
+						margin-right: 7px;	
+						margin-top: -5px;
+						a{
+							color: gray;
+							opacity: 0.3;
+							-moz-opacity: 0.3;
+							filter:alpha(opacity=3);
+						}
+						a:hover{
+							color: #000000;
+							font-style: bold;
+							font-size: 18px;
+						}
+					}
+				}
+				img.commentprofile{
+					margin-left: 4px;
+					height: 70px; 
+					width: 60px;
+				}
+				a.pic{
+					display: inline-block;
+					float: left;
+				}
+				a.name{
+					margin-left: 10px;
+					margin-top: 0px;
+					color: #005AB5;
+					font-weight: bold;
+					display: inline-block;
+				}
+				a.name:hover{
+					opacity: 0.5;
+					-moz-opacity: 0.5;
+					filter:alpha(opacity=5);
+				}
+				div.commentcontent{
+					width: 540px;
+					margin-left: 90px;
+					margin-top: 5px;
+					/*color: Blue;*/
+				}
+				div.time{
+					font-size: 12px;
+					margin-top: 11px;
+					margin-left: 10px;
+					display: inline-block;
+					opacity: 0.5;
+				}
+				span.number{
+					margin-left: 2px;
+					font-size: 12px;
+				}
+				button{
+					background: #F0F0F0;
+					color: #005AB5;
+					border: 0px;
+					padding: 0px;
+					font-weight: bold;
+					margin-left: 2px;
+				}
+				button:hover{
+					opacity: 0.5;
+				}
+				div.new{
+					background: #F0F0F0;
+					/*width: 390px;*/
+					/*position: absolute;*/
+					input{
+						width: 370px;
+						margin: 5px 5px 5px 5px;
+					}
+				}
+			}
+		}
+	}
+}

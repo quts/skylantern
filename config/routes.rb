@@ -1,7 +1,28 @@
 Sky::Application.routes.draw do
   get '/' => 'home#index', :as => :home
+  post '/' => 'home#create'
+  get '/user/:id' => "home#user"
+
   get '/login' => 'home#login'
   get '/logout' => 'home#logout'
+  
+  get '/msg_data' => 'home#msg_data'
+  get '/index/reload' => 'home#reload'
+
+  get '/like/:msg_id' => 'home#like'
+  get '/lol/:msg_id' => 'home#lol'
+
+  get '/msg/:msg_id' =>'home#msg'
+
+  get '/commentCreat' => 'home#add'
+  post '/commentCreat' => 'home#commentCreat'
+
+   get '/CommentLike/:comment_id' => 'home#CommentLike'
+   get '/deleteComment/:comment_id' => 'home#deleteComment'
+
+  get '/add' => 'home#add'
+  post '/add' => 'home#create' 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

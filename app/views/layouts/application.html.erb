@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssreset/cssreset-min.css">
-  <link rel="stylesheet" href="assets/jquery-ui.css">
-  <link rel="stylesheet" href="assets/jquery.ui.datepicker.css">
-  <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="assets/desktop.css" media="screen and (min-width: 620px)">
-  <link rel="stylesheet" type="text/css" href="assets/mobile.css" media="screen and (max-width: 621px)">
-  <link rel="stylesheet" type="text/css" href="assets/main.css"/>
-  <link rel="stylesheet" type="text/css" href="assets/style.css"/>
-  <link rel="stylesheet" type="text/css" href="assets/out.css"/>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
-  <!-- Scripts -->
-  <script type="text/javascript" src="assets/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="assets/jquery.ui.touch-punch.min.js"></script>
-  <script type="text/javascript" src="assets/jquery.ui.datepicker.js"></script>
-  <script type="text/javascript" src="assets/main.js"></script>
-  <!--<script type="text/javascript" src="javascript/facebook.js"></script>-->
-  <!--<script type="text/javascript" src="feeditem.js"></script>-->
+  <%= yield :head %>
   <title>Sky Lantern</title>
   <%= csrf_meta_tags %>
 </head>

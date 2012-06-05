@@ -1,35 +1,64 @@
 <div class="addPost" id="addPostStatus" style="display:none;">
-	<div class="destroy"></div>
-	<span class="header">Fly Your Dream</span>
-	<div class="addPost_sky_lantern"></div>
-	<%= form_tag({:controller => "home", :action => "create"}, :method => "post", :class => "add") do %>
-	
-	<div class="addPost_title_control">
-		<!--<div class="one_man"></div>-->
-		<% #text_field(:msg, :title, :placeholder => 'title') %>
-	</div>
-
-  	<%= text_area(:msg, :content, :size => "40x12", :placeholder => '你想做什麼?') %>
-<!--
-  	<div class="photoUpload">
-		<img id="addPostPreviewIMG" width="130px" height="130px" style="display:none;"/>
-		<embed id="addPostPreviewVIDEO" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always"  width="200px" height="130px" style="display:none;" />
-		<%= text_field(:msg, :link, :id => 'addPostPhotoURL', :placeholder => 'Enter a photo link or a youtube link here') %>
-		<h1 class="preview">preview</h1>
-	</div>
--->
+<div class="destroy"></div>
+<span class="header">Fly Your Dream</span>
+<div class="addPost_sky_lantern"></div>
+<%= form_tag({:controller => "home", :action => "create"}, :method => "post", :class => "add") do %>
 	<div  class="pushToFB">
 		<%=check_box_tag 'pushToFB',1,true%><label>  Post to Fackbook</label>
 	</div>
-  	<div class="timeset">
-  	<%= text_field :msg, :beforeDate, :id => 'datepicker' ,:placeholder => '請輸入實現時間' %>
-  	<%= text_field :msg, :afterTime, :id => 'afterpicker' ,:placeholder => '請輸入實現時間' %>
-  	<%= select(:msg, :afterTimeUnit, options_for_select([['分鐘', 'minutes'], ['小時', 'hours'], ['天', 'days'], ['禮拜', 'weeks'], ['月', 'months'], ['年', 'years']])) %>
-  	<%= select(:msg, :timeSetSelect, options_for_select([['之前', 'before'], ['之後', 'after']]) ) %>
-    </div>
+	<!-- :size => "40x12",  -->
+	<%= text_area(:msg, :content, :placeholder => '你想做什麼?') %>
+	<div class="extraMenu">
+		<ul>
+			<li class="extraMenuPicture"><img src="/assets/icon/two_man.png" id="extraMenutagFriend" /></li>
+			<li class="extraMenuPicture"><img src="/assets/icon/1337785609_tag.png" id="extraMenuTagContent" /></li>
+			<li class="extraMenuPicture"><img src="/assets/play.png" id="extraMenuMedia"/></li>
+		</ul>
+		<span class="extraMenuText" id="extraMenuText" style="display:none;">說明文字</span>
+		<!-- 標記朋友 -->
+		<div class="divTagFriend" id="divTagFriend" style="display:none;">
+			<%= text_field :msg, :tagFriend,:placeholder => '請輸入朋友的名字' %>
+			<div class="list">
+				<ul id="autocompleteFriendList">
+					<li class="friendName"> </li>
+				</ul>
+				<div class="show_list">
+					<ol>
+					</ol>
+				</div>
+				<div style="display:none">
+					<%= text_area(:msg, :friendTagList) %>
+				</div>
+			</div>
+		</div>
+		<!-- 上傳多媒體 -->
+		<div class="photoUpload" id="photoUpload" style="display:none;">
+			<img id="addPostPreviewIMG" width="200px" height="130px" style="display:none;"/>
+			<embed id="addPostPreviewVIDEO" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always"  width="200px" height="130px" style="display:none;" />
+			<%= text_field(:msg, :link, :id => 'addPostPhotoURL', :placeholder => '輸入圖片或Youtube的連結') %>
+		</div>
+		<!-- 標記文章 -->
+		<div class="addPost_title_control" id="addPost_title_control" style="display:none;">
+			<span id="titleShow" style="display:none;"></span>
+			<%= text_field(:msg, :title, :placeholder => '為這則貼文增加一個標籤') %>
+			<div class="list">
+				<ul id="autocompleteTitleList">
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="timeset">
+		<span>在</span>
+		<%= text_field :msg, :beforeDate, :id => 'datepicker' ,:placeholder => '請輸入日期' %>
+		<%= text_field :msg, :afterTime, :id => 'afterpicker' ,:placeholder => '請輸入時間' %>
+		<%= select(:msg, :afterTimeUnit, options_for_select([['分鐘', 'minutes'], ['小時', 'hours'], ['天', 'days'], ['禮拜', 'weeks'], ['月', 'months'], ['年', 'years']])) %>
+		<%= select(:msg, :timeSetSelect, options_for_select([['之後', 'after'],['之前', 'before']]) ) %>
+		<!--<span>實現夢想</span>-->
+	</div>
+	<div class="checkInput"></div>
+	<%# submit_tag("Fly", :class => "flybuttom", :disabled => "disabled") %>
+	<%= submit_tag("Fly", :class => "flybuttom") %>
 
-    <div class="checkInput"></div>
-  	<%= submit_tag("Fly", :class => "flybuttom", :disabled => "disabled") %>
-  
-	<% end %>
+<% end %>
 </div>

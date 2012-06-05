@@ -1,0 +1,225 @@
+$(document).ready(function(){
+	$('div.addPost div.extraMenu #extraMenutagFriend').mouseenter(function(){
+		$('#extraMenuText').replaceWith('<span class="extraMenuText" id="extraMenuText">標記好友</sapn>');
+	}).mouseleave(function(){
+		$('#extraMenuText').replaceWith('<span class="extraMenuText" id="extraMenuText" style="display:none;">說明文字</sapn>');		
+	}).on('click',function(){
+		if(document.getElementById('divTagFriend').style.display == 'none'){
+			document.getElementById('divTagFriend').style.display = 'block';
+			document.getElementById('photoUpload').style.display = 'none';
+			document.getElementById('addPost_title_control').style.display = 'none';
+		}else{
+			document.getElementById('divTagFriend').style.display = 'none';
+		}
+	});
+	$.ajax({
+		url: '/index/friendinfo',
+		type:"GET",
+		dataType:"json",
+		success:function(data){
+			$('#msg_tagFriend').focus(function(){
+				$(this).bind("propertychange keyup input paste", function(event){
+					if ($(this).data('oldVal') != $(this).val()){
+						$(this).data('oldVal', $(this).val());
+						var friendList=data.friendinfo;
+						var TagArray = new Array()
+						var tagcount=0;
+						$('#autocompleteFriendList').replaceWith('<ul id="autocompleteFriendList"></ul>');
+						for(i=0;i<friendList.length;i=i+1)
+						{
+							var id = friendList[i][0];
+							var name = friendList[i][1];
+							lowername = name.toLowerCase();
+							if(lowername.indexOf($('#msg_tagFriend').val())>-1){
+								$('#autocompleteFriendList').append('<li class="friendName" value=' + i + '">' + name + '</li>');
+							}
+						}
+						$('li.friendName').on('click',function(){
+							var friendID = friendList[$(this).val()][0];
+							var friendNAME = friendList[$(this).val()][1];
+							var newone=1;
+							for(j=0;j<tagcount;j++)
+							{
+								if(TagArray[j][0]==friendID)
+								{
+									newone=0;
+									break;
+								}
+								else
+								{
+									newone=1;
+								}
+							}
+							if(newone==1)
+							{
+								TagArray[tagcount] = [friendID,friendNAME];
+								tagcount++;
+								$('div.show_list ol').replaceWith('<ol></ol>');
+								document.getElementById('divTagFriend').value = "";
+								for(k=0;k<tagcount;k++)
+								{
+									var obj=$(' <li class="show_list_subset" value='+ TagArray[k][0] +'><span class="showFriendName"><span class="cancelTag">X</span>' + TagArray[k][1] + '</span><br /></li>');
+									$('div.show_list ol').append(obj);
+									document.getElementById('divTagFriend').value = TagArray[k][0] + "," + document.getElementById('divTagFriend').value;
+								}
+							}
+							$('span.cancelTag').on('click',function(){
+								var targetToremove = document.getElementById('divTagFriend').value;
+								$(this).parents().filter('li').remove();
+								//尋找目標
+								var targetPosition;
+								for(m=0;m<tagcount;m++)
+								{
+									if(TagArray[m]==targetToremove){
+										targetPosition=m;
+									}
+								}	
+								tagcount--;
+								//刪除目標
+								TagArray.splice(targetPosition,1);
+								//重新整理傳送到後台的資料
+								document.getElementById('divTagFriend').value = "";
+								for(k=0;k<tagcount;k++)
+								{
+									document.getElementById('divTagFriend').value = TagArray[k][0] + "," + document.getElementById('divTagFriend').value;
+								}
+								//console.log(document.getElementById('divTagFriend').value);						
+							});
+							//console.log(document.getElementById('divTagFriend').value);
+						});
+					}
+				});
+			});
+		}
+	});
+
+
+
+
+	// photo and video preview
+	$('div.addPost div.extraMenu #extraMenuMedia').mouseenter(function(){
+		$('#extraMenuText').replaceWith('<span class="extraMenuText" id="extraMenuText">加入多媒體連結</sapn>');
+	}).mouseleave(function(){
+		$('#extraMenuText').replaceWith('<span class="extraMenuText" id="extraMenuText" style="display:none;">說明文字</sapn>');		
+	}).on('click',function(){
+		if(document.getElementById('photoUpload').style.display == 'none'){
+			document.getElementById('photoUpload').style.display = 'block';
+			document.getElementById('divTagFriend').style.display = 'none';
+			document.getElementById('addPost_title_control').style.display = 'none';
+		}else{
+			document.getElementById('photoUpload').style.display = 'none';
+		}
+	});
+	$('#addPostPhotoURL').focus(function(){
+		$(this).bind("propertychange keyup input paste", function(event){
+			if ($(this).data('oldVal') != $(this).val()){
+				$(this).data('oldVal', $(this).val());
+				var previewURL = document.getElementById('addPostPhotoURL').value;
+				var previewPhoto = document.getElementById('addPostPreviewIMG');
+				var previewVIDEO = document.getElementById('addPostPreviewVIDEO');			
+				if(previewURL.indexOf('http://ppt.cc')>-1)
+				{
+					previewURL = previewURL + "@.jpg"
+					previewPhoto.src = previewURL;
+					previewPhoto.style.display = 'block';
+					previewVIDEO.style.display = 'none';
+					previewPhoto.onerror=function(){
+						previewPhoto.style.display = 'none';
+						alert("URL doesn't exist");
+					};
+				}
+				else if(previewURL.indexOf('http://www.youtube.com/')>-1)
+				{
+					previewURL = previewURL.split("v=")[1].split("&")[0]
+					previewVIDEO.src = "http://www.youtube.com/v/" + previewURL +"&feature=player_detailpage";
+					previewVIDEO.style.display = 'block';
+					previewPhoto.style.display = 'none';
+				}else{ 
+					previewPhoto.src = previewURL;
+					previewPhoto.style.display = 'block';
+					previewVIDEO.style.display = 'none';
+					previewPhoto.onerror=function(){
+						previewPhoto.style.display = 'none';
+						alert("URL doesn't exist");
+					};
+				}
+			}
+		});
+	});
+
+
+
+	//Tag Article
+	$('div.addPost div.extraMenu #extraMenuTagContent').mouseenter(function(){
+		$('#extraMenuText').replaceWith('<span class="extraMenuText" id="extraMenuText">為文章分類</sapn>');
+	}).mouseleave(function(){
+		$('#extraMenuText').replaceWith('<span class="extraMenuText" id="extraMenuText" style="display:none;">說明文字</sapn>');		
+	}).on('click',function(){
+		if(document.getElementById('addPost_title_control').style.display == 'none'){
+			document.getElementById('addPost_title_control').style.display = 'block';
+			document.getElementById('photoUpload').style.display = 'none';
+			document.getElementById('divTagFriend').style.display = 'none';
+		}else{
+			document.getElementById('addPost_title_control').style.display = 'none';
+		}
+	});
+	/*
+	$('#msg_title').focus(function(){
+		$(this).bind("propertychange keyup input paste", function(event){
+			if ($(this).data('oldVal') != $(this).val()){
+				$(this).data('oldVal', $(this).val());
+				setTimeout(function(){
+					$.ajax({
+						url: '/index/titleinfo',
+						type:"GET",
+						dataType:"json",
+						success:function(data){
+							var titles=data.titles;
+							$('#titleShow').replaceWith('<span id="titleShow" stylt="display:block;">' + $('#msg_title').val() + '</span>');
+						}
+					});
+				},0);
+			}
+		});
+	});
+	*/
+	$.ajax({
+		url:'index/titleinfo',
+		type:'GET',
+		dataType:"json",
+		success:function(data){
+			var titles=data.titles;
+			$('#msg_title').focus(function(){
+				$('#msg_title').bind("propertychange keyup input paste", function(event){
+					if ($(this).data('oldVal') != $(this).val()){
+						$(this).data('oldVal', $(this).val());
+						$('#titleShow').replaceWith('<span id="titleShow" stylt="display:block;">' + $('#msg_title').val() + '</span>');
+						$('#autocompleteTitleList').replaceWith('<ul id="autocompleteTitleList"></ul>');
+						for(i=0;i<titles.length;i++)
+						{
+							if(titles[i].indexOf($(this).val())>-1){
+								var obj=$('<li class="friendName" value="' + i + '">' + titles[i] + '</li>');
+								$('#autocompleteTitleList').append(obj);
+							}
+						}
+					}
+				});
+				$(this).blur(function(){
+					$('#autocompleteTitleList li').on('click',function(){
+						var title_click_by_user = titles[$(this).val()];
+						document.getElementById('msg_title').value = title_click_by_user;
+						$('#msg_title').data('oldVal', $('#msg_title').val());
+						$('#titleShow').replaceWith('<span id="titleShow" stylt="display:block;">' + $('#msg_title').val() + '</span>');
+						$('#autocompleteTitleList').replaceWith('<ul id="autocompleteTitleList"></ul>');
+					});
+				});
+
+			});
+		}
+	});
+
+});
+
+
+//= require jquery
+//= require jquery_ujs

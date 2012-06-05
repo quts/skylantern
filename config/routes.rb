@@ -9,6 +9,7 @@ Sky::Application.routes.draw do
   get '/msg_data' => 'home#msg_data'
   get '/index/reload' => 'home#reload'
   get '/index/friendinfo' => 'home#friendinfo'
+  get '/index/titleinfo' => 'home#titleinfo'
 
   get '/msg/:msg_id' => 'home#msg'
   get '/deleteMsg/:msg_id' => 'home#deleteMsg'
@@ -23,6 +24,9 @@ Sky::Application.routes.draw do
 
   get '/add' => 'home#add'
   post '/add' => 'home#create' 
+
+
+get '/addtest' => 'home#_addPost'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

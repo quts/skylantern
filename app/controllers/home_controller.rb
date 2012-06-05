@@ -62,6 +62,20 @@ class HomeController < ApplicationController
     render :json => {:friendinfo => result}.to_json
   end
 
+  def titleinfo
+    @access_token = rest_graph.access_token
+    if @access_token
+      @user = rest_graph.get('/me')
+    end
+    @titles = Msg.where(:user_id => @user['id'])
+    result = Array.new
+    @titles.each do |title|
+            if(title['title']!="")
+                  result.push(title['title'])
+            end
+    end
+    render :json => {:titles => result}.to_json
+  end
 
   #get '/reload' from reload.js ajax
   def reload

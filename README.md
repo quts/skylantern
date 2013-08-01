@@ -1,6 +1,6 @@
 #SkyLantern
 ##about the website
-This is an website wrote in Ruby on Rails and others libraries, and it's still working at <http://http://skylantern.herokuapp.com/>.
+This is an website wrote in Ruby on Rails and others libraries, and it's still working at <http://skylantern.herokuapp.com/>.
 
 ##Why we establishied it
 We wanted to design a pulk like social website. However, unlike plurk focus on sharing mood with friend immediately, SkyLantern try to establish a platform which sharing the things what will happen in the feature. In other words, we try to share "dream", and the joy of "dreams come ture".  
